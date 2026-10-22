@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fallbacks only; the server config (governorates, degrees) takes precedence. -->
+    <string-array name="governorates">
+        <item>القاهرة</item>
+        <item>الجيزة</item>
+        <item>الإسكندرية</item>
+        <item>القليوبية</item>
+        <item>الشرقية</item>
+        <item>الدقهلية</item>
+        <item>الغربية</item>
+        <item>المنوفية</item>
+        <item>البحيرة</item>
+        <item>كفر الشيخ</item>
+        <item>دمياط</item>
+        <item>بورسعيد</item>
+        <item>الإسماعيلية</item>
+        <item>السويس</item>
+        <item>الفيوم</item>
+        <item>بني سويف</item>
+        <item>المنيا</item>
+        <item>أسيوط</item>
+        <item>سوهاج</item>
+        <item>قنا</item>
+        <item>الأقصر</item>
+        <item>أسوان</item>
+        <item>البحر الأحمر</item>
+        <item>الوادي الجديد</item>
+        <item>مطروح</item>
+        <item>شمال سيناء</item>
+        <item>جنوب سيناء</item>
+    </string-array>
+
+    <string-array name="degrees">
+        <item>تحت التمرين</item>
+        <item>ابتدائي</item>
+        <item>استئناف</item>
+        <item>نقض</item>
+    </string-array>
+
+    <string-array name="degree_values" translatable="false">
+        <item>TRAINEE</item>
+        <item>PRIMARY</item>
+        <item>APPEAL</item>
+        <item>CASSATION</item>
+    </string-array>
+
+    <!-- Starter prompts shown on an empty chat, per AI mode. -->
+    <string-array name="suggest_question">
+        <item>ما مدة الطعن بالاستئناف في الأحكام المدنية؟</item>
+        <item>ما شروط قبول دعوى صحة التوقيع؟</item>
+        <item>متى يسقط الحق في الإيجار بالتقادم؟</item>
+    </string-array>
+
+    <string-array name="suggest_research">
+        <item>أحكام النقض الحديثة في التعويض عن الضرر الأدبي</item>
+        <item>ضوابط فسخ عقد البيع لعدم سداد الثمن</item>
+        <item>مسؤولية المتبوع عن أعمال التابع</item>
+    </string-array>
+
+    <string-array name="suggest_memo">
+        <item>مذكرة دفاع في جنحة شيك بدون رصيد</item>
+        <item>صحيفة دعوى فسخ عقد إيجار لعدم سداد الأجرة</item>
+        <item>إنذار رسمي بالوفاء بالتزام تعاقدي</item>
+    </string-array>
+
+    <string-array name="suggest_debate">
+        <item>البائع يطالب بالفسخ والمشتري يدفع بالوفاء الجزئي</item>
+        <item>دفع بعدم الاختصاص المحلي في دعوى تجارية</item>
+        <item>مدى حجية الصور الضوئية في الإثبات</item>
+    </string-array>
+
+    <string-array name="suggest_compare">
+        <item>قارن بين الفسخ القضائي والفسخ الاتفاقي</item>
+        <item>الفرق بين التقادم المسقط والتقادم المكسب</item>
+        <item>قارن بين دعوى الحيازة ودعوى الملكية</item>
+    </string-array>
+
+    <string-array name="suggest_document">
+        <item>لخّص المستند واستخرج الالتزامات والمواعيد</item>
+        <item>ما نقاط الضعف في هذا العقد بالنسبة لموكلي؟</item>
+        <item>استخرج الوقائع والطلبات من صحيفة الدعوى</item>
+    </string-array>
+</resources>

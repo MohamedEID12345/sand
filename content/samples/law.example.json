@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "id": "law-148-2001",
+    "type": "LAW",
+    "instrument": "LAW",
+    "number": 148,
+    "year": 2001,
+    "title": "قانون التمويل العقاري",
+    "subtitle": "القانون رقم 148 لسنة 2001 بإصدار قانون التمويل العقاري",
+    "categoryId": "finance",
+    "status": null,
+    "statusNote": null,
+    "suggestedStatus": null,
+    "amends": [],
+    "amendedBy": [],
+    "gazette": "الجريدة الرسمية — العدد 25 (مكرر) في 24/6/2001",
+    "issueDate": null,
+    "sourceFile": "law-148-2001.pdf",
+    "textQuality": "TRANSCRIBED",
+    "verified": true,
+    "published": true,
+    "articleCount": 56,
+    "missingArticleNumbers": [],
+    "notes": "المادة 11 مستبدلة بالقانون 143 لسنة 2004 حسب حاشية النص"
+  },
+  "preamble": "قانون رقم ١٤٨ لسنة ٢٠٠١\nبإصدار قانون التمويل العقارى\nباسم الشعب …",
+  "interlude": "قانون التمويل العقارى",
+  "closing": "يبصم هذا القانون بخاتم الدولة، وينفذ كقانون من قوانينها. …",
+  "articles": [
+    { "key": "i1", "part": "issuance", "number": 1, "suffix": null, "label": "المادة الأولى (إصدار)",
+      "heading": null, "page": 1, "text": "مع عدم الإخلال بأحكام …" },
+    { "key": "6", "part": "main", "number": 6, "suffix": null, "label": "مادة 6",
+      "heading": "الباب الثانى — اتفاق التمويل", "page": 3,
+      "text": "يكون التمويل العقارى فى مجال شراء العقارات …\n(أ) الشروط التى تم قبولها …" },
+    { "key": "21-مكرر", "part": "main", "number": 21, "suffix": "مكرر", "label": "مادة 21 مكرر",
+      "heading": null, "page": 10, "amendmentNote": "أضيفت بالقانون رقم … لسنة …", "text": "…" }
+  ]
+}

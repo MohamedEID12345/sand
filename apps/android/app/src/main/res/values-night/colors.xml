@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lg_primary">#A9C2F5</color>
+    <color name="lg_on_primary">#0B1F42</color>
+    <color name="lg_primary_container">#223C6B</color>
+    <color name="lg_on_primary_container">#DCE6F8</color>
+    <color name="lg_secondary">#E2C07A</color>
+    <color name="lg_on_secondary">#3D2C07</color>
+    <color name="lg_secondary_container">#4A3A17</color>
+    <color name="lg_on_secondary_container">#F6ECD6</color>
+    <color name="lg_tertiary">#BDB5FF</color>
+    <color name="lg_on_tertiary">#241C6E</color>
+    <color name="lg_tertiary_container">#342C7A</color>
+    <color name="lg_on_tertiary_container">#E7E4FF</color>
+    <color name="lg_background">#0A101C</color>
+    <color name="lg_on_background">#E6EAF2</color>
+    <color name="lg_surface">#0F1626</color>
+    <color name="lg_on_surface">#E6EAF2</color>
+    <color name="lg_surface_variant">#1A2233</color>
+    <color name="lg_on_surface_variant">#9AA4B6</color>
+    <color name="lg_surface_container_lowest">#0A101C</color>
+    <color name="lg_surface_container_low">#121A2B</color>
+    <color name="lg_surface_container">#161F31</color>
+    <color name="lg_surface_container_high">#1B2538</color>
+    <color name="lg_surface_container_highest">#212C41</color>
+    <color name="lg_outline">#34405A</color>
+    <color name="lg_outline_variant">#232D41</color>
+    <color name="lg_error">#F28B82</color>
+    <color name="lg_on_error">#5F1111</color>
+    <color name="lg_error_container">#5C1A1A</color>
+    <color name="lg_on_error_container">#FDECEC</color>
+    <color name="lg_inverse_surface">#E6EAF2</color>
+    <color name="lg_inverse_on_surface">#1C2333</color>
+    <color name="lg_card">#131B2C</color>
+
+    <color name="tone_success">#5FD39B</color>
+    <color name="tone_success_bg">#12301F</color>
+    <color name="tone_warning">#F2B85B</color>
+    <color name="tone_warning_bg">#35270F</color>
+    <color name="tone_danger">#F28B82</color>
+    <color name="tone_danger_bg">#3A1616</color>
+    <color name="tone_info">#8DB3FF</color>
+    <color name="tone_info_bg">#15264A</color>
+    <color name="tone_neutral">#A7B0C2</color>
+    <color name="tone_neutral_bg">#1E2738</color>
+    <color name="tone_gold">#E2C07A</color>
+    <color name="tone_gold_bg">#332812</color>
+    <color name="tone_ai">#BDB5FF</color>
+    <color name="tone_ai_bg">#241F52</color>
+
+    <color name="bubble_user">#223C6B</color>
+    <color name="bubble_user_text">#F2F5FB</color>
+    <color name="bubble_ai">#151D2F</color>
+    <color name="bubble_ai_text">#E6EAF2</color>
+</resources>

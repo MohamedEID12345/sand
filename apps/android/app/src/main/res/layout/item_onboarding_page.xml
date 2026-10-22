@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/space_3xl">
+
+    <FrameLayout
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="@drawable/bg_hero">
+
+        <ImageView
+            android:id="@+id/onb_icon"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            app:tint="@color/brand_gold" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/onb_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_3xl"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.LG.Headline"
+        android:textColor="?attr/colorOnSurface" />
+
+    <TextView
+        android:id="@+id/onb_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_m"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.25"
+        android:maxWidth="360dp"
+        android:textAppearance="@style/TextAppearance.LG.Body"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+</LinearLayout>

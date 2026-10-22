@@ -1,0 +1,17 @@
+{
+  "id": "wasit-civil-vol1",
+  "type": "BOOK",
+  "title": "اسم المرجع",
+  "subtitle": "الجزء الأول — مصادر الالتزام",
+  "author": "اسم المؤلف",
+  "publisher": "دار النشر",
+  "edition": "الطبعة الثالثة",
+  "year": 2015,
+  "categoryId": "civil",
+  "language": "ar",
+  "file": "books/wasit-civil-vol1.pdf",
+  "license": "OWNED",
+  "licenseNote": "نسخة مملوكة/مرخصة للمنصة بتاريخ …",
+  "firstContentPage": 9,
+  "tags": ["مدني", "التزامات", "عقد"]
+}

@@ -1,0 +1,191 @@
+{
+ "id": "mof-tax-dispute-settlement-request",
+ "name": "طلب إنهاء منازعة ضريبية (القانون 152 لسنة 2026)",
+ "sort": 10,
+ "description": "النموذج الرسمي المرفق بقرار وزير المالية 450 لسنة 2026 لطلب إحالة النزاع الضريبي إلى لجنة إنهاء المنازعات.",
+ "fields": [
+  {
+   "key": "taxOffice",
+   "label": "مأمورية / مركز الضرائب",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "taxpayerName",
+   "label": "اسم الممول / المكلف",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "taxRegistrationNo",
+   "label": "رقم التسجيل الضريبي",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "activity",
+   "label": "النشاط",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "activityAddress",
+   "label": "عنوان النشاط",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "mailingAddress",
+   "label": "عنوان المراسلة",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "email",
+   "label": "البريد الإلكتروني",
+   "type": "email",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "phone",
+   "label": "رقم الهاتف",
+   "type": "phone",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "taxTypes",
+   "label": "نوع الضريبة",
+   "type": "multiselect",
+   "required": true,
+   "group": "البيانات",
+   "options": [
+    {
+     "value": "1",
+     "label": "الضريبة على أرباح الأشخاص الاعتبارية"
+    },
+    {
+     "value": "2",
+     "label": "الضريبة على أرباح الأشخاص الطبيعيين"
+    },
+    {
+     "value": "3",
+     "label": "الضريبة على الأجور والمرتبات"
+    },
+    {
+     "value": "4",
+     "label": "الدمغة ورسم تنمية الموارد المالية للدولة"
+    },
+    {
+     "value": "5",
+     "label": "الضريبة العامة على المبيعات / القيمة المضافة"
+    },
+    {
+     "value": "6",
+     "label": "الضريبة على العقارات المبنية"
+    },
+    {
+     "value": "7",
+     "label": "الضريبة على مقابل دخول المسارح والملاهي"
+    }
+   ]
+  },
+  {
+   "key": "taxPeriods",
+   "label": "الفترة / الفترات الضريبية",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "disputedBase",
+   "label": "قيمة الوعاء المتنازع عليه",
+   "type": "money",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "disputedTax",
+   "label": "قيمة الضريبة المتنازع عليها",
+   "type": "money",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "appealCommittee",
+   "label": "لجنة الطعن",
+   "type": "text",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "appealNo",
+   "label": "رقم الطعن",
+   "type": "text",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "court",
+   "label": "المحكمة",
+   "type": "text",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "caseNo",
+   "label": "رقم الدعوى",
+   "type": "text",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "applicantName",
+   "label": "اسم مقدم الطلب",
+   "type": "text",
+   "required": true,
+   "group": "مقدم الطلب"
+  },
+  {
+   "key": "applicantCapacity",
+   "label": "الصفة",
+   "type": "text",
+   "required": true,
+   "group": "مقدم الطلب"
+  },
+  {
+   "key": "authorizationNo",
+   "label": "التوكيل / التفويض",
+   "type": "text",
+   "required": false,
+   "group": "مقدم الطلب",
+   "defaultValue": "............"
+  }
+ ],
+ "body": "طلب\nإنهاء منازعة ضريبية طبقًا للقانون رقم ١٥٢ لسنة ٢٠٢٦ بتجديد العمل بالقانون رقم ٧٩ لسنة ٢٠١٦ في شأن إنهاء المنازعات الضريبية\n\nالسيد الأستاذ/ رئيس مأمورية/مركز {{taxOffice}}\nتحية طيبة وبعد،\nبرجاء التكرم بإحالة النزاع الموضح بياناته بعد إلى لجنة إنهاء المنازعات الضريبية المختصة.\nاسم الممول/المكلف/ {{taxpayerName}}\nرقم التسجيل الضريبي/ {{taxRegistrationNo}} — عنوان النشاط/ {{activityAddress}}\nالنشاط/ {{activity}}\nعنوان المراسلة/ {{mailingAddress}}\nالبريد الإلكتروني/ {{email}} — رقم الهاتف/ {{phone}}\nنوع الضريبة: {{taxTypes}}\nالفترة/الفترات الضريبية/ {{taxPeriods}}\nقيمة الوعاء المتنازع عليه/ {{disputedBase}} — قيمة الضريبة المتنازع عليها/ {{disputedTax}}\nالجهة المنظور أمامها النزاع حاليًا:\nلجنة الطعن: {{appealCommittee}} — رقم الطعن/ {{appealNo}}\nمحكمة: {{court}} — رقم الدعوى/ {{caseNo}}\n\nمقدمه/\nالاسم/ {{applicantName}}\nالصفة/ {{applicantCapacity}}\nالتوكيل/التفويض/ {{authorizationNo}}",
+ "legalBasis": [
+  "القانون رقم 79 لسنة 2016 في شأن إنهاء المنازعات الضريبية",
+  "القانون رقم 152 لسنة 2026",
+  "قرار وزير المالية رقم 450 لسنة 2026"
+ ],
+ "category": "TAX_FORMS",
+ "categoryLabel": "نماذج وطلبات ضريبية وجمركية",
+ "credits": 1,
+ "active": true,
+ "version": 1,
+ "fixedQuotes": true,
+ "source": "قرار وزير المالية رقم 450 لسنة 2026 (النموذجان المرفقان به)",
+ "draftingInstructions": "املأ النموذج بالبيانات كما أدخلها المستخدم. نبّه إلى أن العمل بالقانون 79 لسنة 2016 مجدد حتى 31 ديسمبر 2026 وأن الطلب يجوز تقديمه إلكترونيًا مجانًا."
+}

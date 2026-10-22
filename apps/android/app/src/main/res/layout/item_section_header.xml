@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/section_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/screen_padding"
+    android:paddingTop="@dimen/space_l"
+    android:paddingEnd="@dimen/screen_padding"
+    android:paddingBottom="@dimen/space_xs"
+    android:textAppearance="@style/TextAppearance.LG.Caption"
+    android:textColor="?attr/colorSecondary" />

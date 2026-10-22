@@ -1,0 +1,44 @@
+{
+  "id": "lease-residential-civil",
+  "name": "عقد إيجار وحدة سكنية",
+  "category": "LEASE",
+  "categoryLabel": "عقود الإيجار",
+  "description": "عقد إيجار وحدة سكنية خاضع لأحكام القانون المدني والقانون رقم 4 لسنة 1996.",
+  "credits": 2,
+  "active": true,
+  "sort": 10,
+  "version": 1,
+  "legalBasis": ["القانون المدني — المواد 558 وما بعدها", "القانون رقم 4 لسنة 1996"],
+  "fields": [
+    { "key": "landlordName", "label": "اسم المؤجر", "type": "text", "required": true, "group": "المؤجر", "maxLength": 120 },
+    { "key": "landlordNid", "label": "الرقم القومي للمؤجر", "type": "national_id", "required": true, "group": "المؤجر" },
+    { "key": "landlordAddress", "label": "عنوان المؤجر", "type": "text", "required": true, "group": "المؤجر" },
+    { "key": "tenantName", "label": "اسم المستأجر", "type": "text", "required": true, "group": "المستأجر", "maxLength": 120 },
+    { "key": "tenantNid", "label": "الرقم القومي للمستأجر", "type": "national_id", "required": true, "group": "المستأجر" },
+    { "key": "tenantPhone", "label": "موبايل المستأجر", "type": "phone", "required": false, "group": "المستأجر" },
+    { "key": "unitAddress", "label": "عنوان الوحدة المؤجرة", "type": "textarea", "required": true, "group": "العين المؤجرة" },
+    { "key": "unitDescription", "label": "وصف الوحدة", "type": "textarea", "required": false, "group": "العين المؤجرة",
+      "placeholder": "عدد الغرف، الدور، المرافق…" },
+    { "key": "furnished", "label": "الوحدة مفروشة", "type": "checkbox", "group": "العين المؤجرة" },
+    { "key": "startDate", "label": "تاريخ بداية الإيجار", "type": "date", "required": true, "group": "المدة والأجرة" },
+    { "key": "durationMonths", "label": "مدة العقد (بالشهور)", "type": "number", "required": true, "min": 1, "max": 600, "group": "المدة والأجرة" },
+    { "key": "monthlyRent", "label": "الأجرة الشهرية", "type": "money", "required": true, "min": 1, "group": "المدة والأجرة" },
+    { "key": "paymentDay", "label": "موعد سداد الأجرة", "type": "select", "required": true, "group": "المدة والأجرة",
+      "options": [
+        { "value": "START", "label": "مقدمًا أول كل شهر" },
+        { "value": "DAY5", "label": "خلال الخمسة أيام الأولى من الشهر" },
+        { "value": "END", "label": "آخر كل شهر" }
+      ] },
+    { "key": "deposit", "label": "مبلغ التأمين", "type": "money", "required": false, "min": 0, "group": "المدة والأجرة" },
+    { "key": "annualIncreasePercent", "label": "نسبة الزيادة السنوية %", "type": "number", "required": false, "min": 0, "max": 100, "group": "المدة والأجرة" },
+    { "key": "extraClauses", "label": "بنود إضافية مطلوبة", "type": "multiselect", "required": false, "group": "بنود اختيارية",
+      "options": [
+        { "value": "NO_SUBLEASE", "label": "حظر التأجير من الباطن" },
+        { "value": "UTILITIES_TENANT", "label": "المرافق على المستأجر" },
+        { "value": "NOTICE_60", "label": "إخطار قبل الإنهاء بـ 60 يومًا" },
+        { "value": "ARBITRATION", "label": "شرط التحكيم" }
+      ] }
+  ],
+  "body": "إنه في يوم {{contractDate}}\nتحرر هذا العقد بين كل من:\nأولًا: السيد/ {{landlordName}}، رقم قومي {{landlordNid}}، المقيم في {{landlordAddress}} (طرف أول مؤجر)\nثانيًا: السيد/ {{tenantName}}، رقم قومي {{tenantNid}} (طرف ثانٍ مستأجر)\n\nالبند الأول: أجّر الطرف الأول للطرف الثاني الوحدة الكائنة في {{unitAddress}}…\n\nالبند الثاني: مدة هذا العقد {{durationMonths}} شهرًا تبدأ من {{startDate}}…\n\nالبند الثالث: الأجرة الشهرية {{monthlyRent}} جنيه تُسدد {{paymentDay}}…",
+  "draftingInstructions": "أكمل بنود العقد وفق القانون المدني والقانون 4 لسنة 1996 فقط. أضف البنود الاختيارية المختارة في extraClauses. لا تخترع أرقام مواد؛ كل مادة تُذكر يجب أن تكون من المصادر المسترجعة. أرجع ملاحظات مراجعة (reviewNotes) لأي بيانات ناقصة أو غير متسقة."
+}

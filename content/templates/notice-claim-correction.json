@@ -1,0 +1,190 @@
+{
+ "id": "notice-claim-correction",
+ "name": "إعلان بتصحيح شكل الدعوى",
+ "sort": 15,
+ "description": "إعلان الخصم بتصحيح الطلب الأصلي أو تعديل موضوعه لظروف طرأت بعد رفع الدعوى (المادتان 123 و124/1 مرافعات).",
+ "legalBasis": [
+  "قانون المرافعات المدنية والتجارية — المادتان 123 و124/1"
+ ],
+ "fields": [
+  {
+   "key": "serviceDay",
+   "label": "يوم الإعلان",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "serviceDate",
+   "label": "تاريخ الإعلان",
+   "type": "date",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "bailiffName",
+   "label": "اسم المحضر",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "servedWith",
+   "label": "مخاطبًا مع",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "requesterName",
+   "label": "اسم الطالب",
+   "type": "text",
+   "required": true,
+   "group": "الطالب",
+   "maxLength": 150
+  },
+  {
+   "key": "requesterAddress",
+   "label": "عنوان الطالب",
+   "type": "text",
+   "required": true,
+   "group": "الطالب"
+  },
+  {
+   "key": "lawyerName",
+   "label": "اسم المحامي",
+   "type": "text",
+   "required": true,
+   "group": "المحامي (المحل المختار)"
+  },
+  {
+   "key": "lawyerOfficeAddress",
+   "label": "عنوان مكتب المحامي",
+   "type": "text",
+   "required": true,
+   "group": "المحامي (المحل المختار)"
+  },
+  {
+   "key": "bailiffCourt",
+   "label": "محكمة المحضرين (الجزئية)",
+   "type": "text",
+   "required": true,
+   "group": "المحضرين",
+   "placeholder": "مثال: الزقازيق"
+  },
+  {
+   "key": "respondentName",
+   "label": "اسم المعلن إليه",
+   "type": "text",
+   "required": true,
+   "group": "المعلن إليه"
+  },
+  {
+   "key": "respondentAddress",
+   "label": "عنوان المعلن إليه",
+   "type": "text",
+   "required": true,
+   "group": "المعلن إليه"
+  },
+  {
+   "key": "respondentDistrict",
+   "label": "القسم / المركز",
+   "type": "text",
+   "required": true,
+   "group": "المعلن إليه"
+  },
+  {
+   "key": "respondentGovernorate",
+   "label": "المحافظة",
+   "type": "text",
+   "required": true,
+   "group": "المعلن إليه"
+  },
+  {
+   "key": "caseNumber",
+   "label": "رقم الدعوى",
+   "type": "text",
+   "required": true,
+   "group": "الدعوى"
+  },
+  {
+   "key": "caseYear",
+   "label": "سنة الدعوى",
+   "type": "number",
+   "required": true,
+   "min": 1950,
+   "max": 2100,
+   "group": "الدعوى"
+  },
+  {
+   "key": "courtName",
+   "label": "المحكمة",
+   "type": "text",
+   "required": true,
+   "group": "الدعوى"
+  },
+  {
+   "key": "circuit",
+   "label": "الدائرة",
+   "type": "text",
+   "required": true,
+   "group": "الدعوى"
+  },
+  {
+   "key": "courtAddress",
+   "label": "مقر المحكمة",
+   "type": "text",
+   "required": true,
+   "group": "الدعوى"
+  },
+  {
+   "key": "originalRequests",
+   "label": "الطلبات الواردة بختام صحيفة الدعوى",
+   "type": "textarea",
+   "required": true,
+   "group": "الدعوى"
+  },
+  {
+   "key": "adjournHearingDate",
+   "label": "تاريخ الجلسة التي قررت التأجيل",
+   "type": "date",
+   "required": true,
+   "group": "التصحيح"
+  },
+  {
+   "key": "correctedRequest",
+   "label": "الطلب بعد التصحيح / التعديل",
+   "type": "textarea",
+   "required": true,
+   "group": "التصحيح"
+  },
+  {
+   "key": "hearingDay",
+   "label": "يوم الجلسة",
+   "type": "text",
+   "required": true,
+   "group": "الجلسة",
+   "placeholder": "مثال: الأحد"
+  },
+  {
+   "key": "hearingDate",
+   "label": "تاريخ الجلسة",
+   "type": "date",
+   "required": true,
+   "group": "الجلسة"
+  }
+ ],
+ "body": "إنه في يوم {{serviceDay}} الموافق {{serviceDate}}\nبناءً على طلب السيد/ {{requesterName}} المقيم في {{requesterAddress}}\nومحله المختار مكتب الأستاذ/ {{lawyerName}} المحامي الكائن في {{lawyerOfficeAddress}}\nأنا {{bailiffName}} محضر محكمة {{bailiffCourt}} الجزئية قد انتقلت في التاريخ المذكور أعلاه وأعلنت:\nالسيد/ {{respondentName}} المقيم في {{respondentAddress}} قسم {{respondentDistrict}} محافظة {{respondentGovernorate}}\nمخاطبًا مع/ {{servedWith}}\nوأعلنته بالآتي\nأقام الطالب ضد المعلن إليه الدعوى رقم {{caseNumber}} لسنة {{caseYear}} أمام محكمة {{courtName}} الدائرة ({{circuit}}) طالبًا في ختام صحيفة افتتاحها الحكم له بـ {{originalRequests}}.\nوبجلسة {{adjournHearingDate}} قررت المحكمة تأجيل نظر الدعوى إلى جلسة {{hearingDate}} بناءً على طلب المدعي وذلك لتصحيح شكل الدعوى لحدوث أمر عارض يستلزم تصحيح الطلب الأصلي وهو:\n{{correctedRequest}}\nإعمالًا لنص المادة ١٢٣ من قانون المرافعات التي تنص على أنه:\n\"تقدم الطلبات العارضة من المدعى أو من المدعى عليه إلى المحكمة بالإجراءات المعتادة لرفع الدعوى قبل يوم الجلسة أو بطلب يقدم شفاهة في الجلسة في حضور الخصم ويثبت في محضرها ولا تقبل الطلبات العارضة بعد إقفال باب المرافعة.\"\nونص المادة ١٢٤/١ من قانون المرافعات التي تنص على أنه:\n\"للمدعى أن يقدم من الطلبات العارضة:\n١ - ما يتضمن تصحيح الطلب الأصلي أو تعديل موضوعه لمواجهة ظروف طرأت أو تبينت بعد رفع الدعوى.\"\nوحيث يهم الطالب تنفيذ قرار المحكمة.\n\nبناءً عليه\nأنا المحضر سالف الذكر قد انتقلت في التاريخ المذكور أعلاه إلى حيث المعلن إليه وسلمته صورة من هذا الإعلان وكلفته بالحضور أمام محكمة {{courtName}} الكائن مقرها في {{courtAddress}} أمام الدائرة ({{circuit}}) وذلك بجلستها العلنية التي ستنعقد في تمام الساعة التاسعة وما بعدها من صباح يوم {{hearingDay}} الموافق {{hearingDate}} وذلك لسماع الحكم بتصحيح شكل الدعوى بـ {{correctedRequest}} وسماع الحكم بالطلبات الواردة بأصل صحيفة الدعوى، مع حفظ كافة الحقوق القانونية الأخرى للطالب.\nالسند القانوني: المادتان ١٢٣، ١٢٤/١ من قانون المرافعات.\nولأجل/\n\n— الموضوع: إعلان بتصحيح شكل الدعوى — بناءً على طلب الطالب وتحت مسئوليته — وكيل الطالب: أ/ {{lawyerName}} المحامي",
+ "category": "COURT_PAPERS",
+ "categoryLabel": "صحف الدعاوى والإعلانات",
+ "credits": 1,
+ "active": true,
+ "version": 1,
+ "fixedQuotes": true,
+ "source": "البوابة القانونية للتشريعات المصرية — مركز المعلومات ودعم اتخاذ القرار (elpai.idsc.gov.eg)",
+ "draftingInstructions": "املأ القيم كما أدخلها المستخدم حرفيًا ولا تغيّر النصوص القانونية المقتبسة داخل النموذج. الحقول الفارغة الخاصة بالمحضر تبقى نقاطًا. لا تضف مواد أو أحكامًا غير موجودة في المصادر المسترجعة؛ إن طُلبت صياغة الأسباب فاكتبها من وقائع المستخدم فقط مع الاستشهاد بالمكتبة. أرجع ملاحظات مراجعة مختصرة (مواعيد الإعلان، الاختصاص، المستندات المطلوبة)."
+}

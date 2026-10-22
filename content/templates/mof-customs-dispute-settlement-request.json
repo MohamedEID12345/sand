@@ -1,0 +1,171 @@
+{
+ "id": "mof-customs-dispute-settlement-request",
+ "name": "طلب إنهاء منازعة جمركية (القانون 152 لسنة 2026)",
+ "sort": 20,
+ "description": "النموذج الرسمي المرفق بقرار وزير المالية 450 لسنة 2026 لطلب إحالة النزاع الجمركي إلى لجنة إنهاء المنازعات الجمركية.",
+ "fields": [
+  {
+   "key": "customsAdministration",
+   "label": "الإدارة",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "traderName",
+   "label": "اسم المتعامل",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "tradersRegNo",
+   "label": "رقم المتعاملين",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "activity",
+   "label": "النشاط",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "mailingAddress",
+   "label": "عنوان المراسلة",
+   "type": "text",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "email",
+   "label": "البريد الإلكتروني",
+   "type": "email",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "phone",
+   "label": "رقم الهاتف",
+   "type": "phone",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "customsData",
+   "label": "البيانات الجمركية",
+   "type": "textarea",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "disputedDuties",
+   "label": "قيمة الضرائب والرسوم الجمركية المتنازع عليها",
+   "type": "money",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "paidDuties",
+   "label": "الضرائب والرسوم المسددة",
+   "type": "text",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "paymentDate",
+   "label": "تاريخ السداد",
+   "type": "date",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "grounds",
+   "label": "أسانيد الطلب بإيجاز",
+   "type": "textarea",
+   "required": true,
+   "group": "البيانات"
+  },
+  {
+   "key": "customsOffice",
+   "label": "الجمارك",
+   "type": "text",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "grievanceNo",
+   "label": "رقم التظلم",
+   "type": "text",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "court",
+   "label": "المحكمة",
+   "type": "text",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "caseNo",
+   "label": "رقم الدعوى",
+   "type": "text",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "arbitration",
+   "label": "لجان التحكيم",
+   "type": "text",
+   "required": false,
+   "group": "البيانات",
+   "defaultValue": "............"
+  },
+  {
+   "key": "applicantName",
+   "label": "اسم مقدم الطلب",
+   "type": "text",
+   "required": true,
+   "group": "مقدم الطلب"
+  },
+  {
+   "key": "applicantCapacity",
+   "label": "الصفة",
+   "type": "text",
+   "required": true,
+   "group": "مقدم الطلب"
+  },
+  {
+   "key": "authorizationNo",
+   "label": "التوكيل / التفويض",
+   "type": "text",
+   "required": false,
+   "group": "مقدم الطلب",
+   "defaultValue": "............"
+  }
+ ],
+ "body": "طلب\nإنهاء منازعة جمركية طبقًا للقانون رقم ١٥٢ لسنة ٢٠٢٦ بتجديد العمل بالقانون رقم ٧٩ لسنة ٢٠١٦ في شأن إنهاء المنازعات الضريبية\n\nالسيد الأستاذ/ رئيس الإدارة {{customsAdministration}}\nتحية طيبة وبعد،\nبرجاء التكرم بإحالة النزاع الموضح بياناته بعد إلى لجنة إنهاء المنازعات الجمركية المختصة.\nاسم المتعامل/ {{traderName}}\nرقم المتعاملين/ {{tradersRegNo}} — النشاط/ {{activity}}\nعنوان المراسلة/ {{mailingAddress}}\nالبريد الإلكتروني/ {{email}} — رقم الهاتف/ {{phone}}\nالبيانات الجمركية/ {{customsData}}\nقيمة الضرائب والرسوم الجمركية المتنازع عليها/ {{disputedDuties}}\nالضرائب والرسوم الجمركية المسددة/ {{paidDuties}} — تاريخ السداد/ {{paymentDate}}\nأسانيد الطلب بإيجاز/ {{grounds}}\nالجهة المنظور أمامها النزاع حاليًا:\nالجمارك: {{customsOffice}} — رقم التظلم/ {{grievanceNo}}\nمحكمة: {{court}} — رقم الدعوى/ {{caseNo}}\nلجان التحكيم: {{arbitration}}\n\nمقدمه/\nالاسم/ {{applicantName}}\nالصفة/ {{applicantCapacity}}\nالتوكيل/التفويض/ {{authorizationNo}}",
+ "legalBasis": [
+  "القانون رقم 79 لسنة 2016 في شأن إنهاء المنازعات الضريبية",
+  "القانون رقم 152 لسنة 2026",
+  "قرار وزير المالية رقم 450 لسنة 2026"
+ ],
+ "category": "TAX_FORMS",
+ "categoryLabel": "نماذج وطلبات ضريبية وجمركية",
+ "credits": 1,
+ "active": true,
+ "version": 1,
+ "fixedQuotes": true,
+ "source": "قرار وزير المالية رقم 450 لسنة 2026 (النموذجان المرفقان به)",
+ "draftingInstructions": "املأ النموذج بالبيانات كما أدخلها المستخدم. نبّه إلى أن العمل بالقانون 79 لسنة 2016 مجدد حتى 31 ديسمبر 2026 وأن الطلب يجوز تقديمه إلكترونيًا مجانًا."
+}

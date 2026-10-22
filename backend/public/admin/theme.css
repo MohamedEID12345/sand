@@ -1,0 +1,46 @@
+/* سند (Sand) — design system for the web consoles (admin + office portal) */
+:root{--bg:#f3f1ec;--surface:#ffffff;--surface-2:#faf8f4;--ink:#141a26;--mute:#6b7280;--line:#e7e2d8;
+--brand:#0f2a47;--brand-2:#1b4b7a;--gold:#c79a3a;--gold-2:#e7c47a;--ok:#0f7b52;--bad:#b42318;--warn:#b54708;
+--radius:16px;--shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.06)}
+@media(prefers-color-scheme:dark){:root{--bg:#0b111b;--surface:#121a27;--surface-2:#0f1622;--ink:#e8ecf2;--mute:#9aa4b2;--line:#233044;
+--brand:#d9b562;--brand-2:#8fb3e6;--gold:#d9b562;--gold-2:#f1d48e;--shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;font-family:"Segoe UI","Noto Kufi Arabic","Noto Naskh Arabic",Tahoma,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6}
+.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+aside{background:linear-gradient(180deg,#0f2a47 0%,#0a1c31 100%);color:#e9eef6;padding:22px 14px;position:sticky;top:0;height:100vh;overflow:auto}
+aside .logo{display:flex;align-items:center;gap:10px;padding:4px 10px 20px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:14px}
+aside .logo .mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-2));display:grid;place-items:center;color:#0f2a47;font-weight:800;font-size:20px}
+aside .logo b{display:block;font-size:16px}aside .logo small{color:#9fb3cc}
+aside button{display:flex;width:100%;align-items:center;gap:10px;border:0;background:none;color:#c9d6e6;padding:10px 12px;border-radius:10px;cursor:pointer;font:inherit;text-align:right;margin-bottom:2px}
+aside button:hover{background:rgba(255,255,255,.06);color:#fff}aside button.on{background:linear-gradient(90deg,rgba(199,154,58,.25),rgba(199,154,58,.05));color:#fff;box-shadow:inset -3px 0 0 var(--gold)}
+aside .ico{width:22px;text-align:center;opacity:.9}
+.top{display:flex;align-items:center;gap:12px;padding:18px 28px;border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:5}
+.top h2{margin:0;font-size:20px}.top .sp{flex:1}.chip{background:var(--surface-2);border:1px solid var(--line);border-radius:99px;padding:4px 12px;font-size:13px;color:var(--mute)}
+main{padding:24px 28px;max-width:1400px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 12px;font-size:16px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:18px}
+.kpi{position:relative;overflow:hidden}.kpi b{display:block;font-size:30px;font-weight:800;color:var(--brand);letter-spacing:-.5px}
+.kpi span{color:var(--mute);font-size:13px}.kpi:after{content:"";position:absolute;inset:auto -30px -30px auto;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(199,154,58,.22),transparent 70%)}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:14px}th{position:sticky;top:0;background:var(--surface-2);color:var(--mute);font-weight:600;font-size:12.5px;text-transform:none}
+th,td{padding:10px 10px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}tr:hover td{background:var(--surface-2)}
+.tbl{max-height:62vh;overflow:auto;border:1px solid var(--line);border-radius:12px}
+input,select,textarea{font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);color:var(--ink);outline:none;transition:.15s}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(199,154,58,.18)}
+textarea{width:100%;min-height:320px;font-family:ui-monospace,Consolas,monospace;font-size:13px;direction:ltr}
+textarea.rtl{direction:rtl;font-family:inherit;min-height:110px}
+.btn{border:0;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;padding:9px 16px;border-radius:10px;cursor:pointer;font:inherit;font-weight:600;box-shadow:0 2px 6px rgba(15,42,71,.25)}
+@media(prefers-color-scheme:dark){.btn{color:#0b111b}}
+.btn:hover{filter:brightness(1.08)}.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1d1406}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none}.btn.bad{background:var(--bad);color:#fff}.btn.sm{padding:5px 11px;font-size:13px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.row .sp{flex:1}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12px;background:var(--surface-2);border:1px solid var(--line)}
+.pill.ok{color:var(--ok);border-color:rgba(15,123,82,.35);background:rgba(15,123,82,.08)}.pill.bad{color:var(--bad);border-color:rgba(180,35,24,.35);background:rgba(180,35,24,.08)}
+.pill.warn{color:var(--warn);border-color:rgba(181,71,8,.35);background:rgba(181,71,8,.08)}
+.mute{color:var(--mute);font-size:13px}#toast{position:fixed;bottom:22px;left:22px;background:var(--brand);color:#fff;padding:12px 18px;border-radius:12px;display:none;box-shadow:var(--shadow);z-index:20}
+.login{min-height:100vh;display:grid;place-items:center;background:radial-gradient(1200px 600px at 80% -10%,rgba(199,154,58,.25),transparent),linear-gradient(160deg,#0f2a47,#081525)}
+.login .card{width:min(420px,92vw);padding:32px}.login input{width:100%;margin-bottom:12px}.login .mark{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--gold),var(--gold-2));display:grid;place-items:center;font-size:26px;font-weight:800;color:#0f2a47;margin-bottom:14px}
+.msg{padding:10px 12px;border-radius:12px;margin:8px 0;background:var(--surface-2);border:1px solid var(--line)}.msg.s{background:rgba(199,154,58,.1);border-color:rgba(199,154,58,.35)}
+.drop{border:2px dashed var(--line);border-radius:14px;padding:22px;text-align:center;background:var(--surface-2)}.drop input{margin-top:8px}
+.form{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:12px}.form label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mute)}
+pre{direction:ltr;white-space:pre-wrap;background:var(--surface-2);padding:12px;border-radius:10px;font-size:12.5px}
+@media(max-width:900px){.shell{grid-template-columns:1fr}aside{position:static;height:auto}}

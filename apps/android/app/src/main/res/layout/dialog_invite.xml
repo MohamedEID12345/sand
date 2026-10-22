@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/space_2xl"
+    android:paddingTop="@dimen/space_s"
+    android:paddingEnd="@dimen/space_2xl">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_layout"
+        style="@style/Widget.LG.TextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_m"
+        android:hint="@string/field_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textAlignment="viewStart"
+            android:textDirection="ltr" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/role_layout"
+        style="@style/Widget.LG.TextInput.Dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/team_role">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:textAlignment="viewStart" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        style="@style/LG.Text.Muted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_s"
+        android:text="@string/team_invite_note"
+        android:textSize="12sp" />
+</LinearLayout>

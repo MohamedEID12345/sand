@@ -1,0 +1,420 @@
+{
+ "id": "notice-special-addressee",
+ "name": "إعلان على يد محضر لجهة خاصة (المادة 13 مرافعات)",
+ "sort": 30,
+ "description": "صيغة ورقة إعلان لوزير، أو شركة، أو شركة أجنبية، أو فرد بالقوات المسلحة، أو مسجون، أو مقيم بالخارج، أو من ليس له موطن معلوم — مع السند القانوني لكل حالة.",
+ "legalBasis": [
+  "قانون المرافعات المدنية والتجارية — المادة 13 (البنود 1، 3، 4، 5، 6، 7، 9، 10)"
+ ],
+ "fields": [
+  {
+   "key": "serviceDay",
+   "label": "يوم الإعلان",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "serviceDate",
+   "label": "تاريخ الإعلان",
+   "type": "date",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "bailiffName",
+   "label": "اسم المحضر",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "servedWith",
+   "label": "مخاطبًا مع",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "requesterName",
+   "label": "اسم الطالب",
+   "type": "text",
+   "required": true,
+   "group": "الطالب",
+   "maxLength": 150
+  },
+  {
+   "key": "requesterAddress",
+   "label": "عنوان الطالب",
+   "type": "text",
+   "required": true,
+   "group": "الطالب"
+  },
+  {
+   "key": "lawyerName",
+   "label": "اسم المحامي",
+   "type": "text",
+   "required": true,
+   "group": "المحامي (المحل المختار)"
+  },
+  {
+   "key": "lawyerOfficeAddress",
+   "label": "عنوان مكتب المحامي",
+   "type": "text",
+   "required": true,
+   "group": "المحامي (المحل المختار)"
+  },
+  {
+   "key": "bailiffCourt",
+   "label": "محكمة المحضرين (الجزئية)",
+   "type": "text",
+   "required": true,
+   "group": "المحضرين",
+   "placeholder": "مثال: الزقازيق"
+  },
+  {
+   "key": "addresseeType",
+   "label": "المعلن إليه",
+   "type": "select",
+   "required": true,
+   "group": "بيانات المعلن إليه",
+   "options": [
+    {
+     "value": "MINISTER",
+     "label": "أحد الوزراء / جهة حكومية"
+    },
+    {
+     "value": "COMPANY",
+     "label": "شركة تجارية أو شخص اعتباري"
+    },
+    {
+     "value": "FOREIGN_COMPANY",
+     "label": "شركة أجنبية لها فرع أو وكيل في مصر"
+    },
+    {
+     "value": "ARMED_FORCES",
+     "label": "أحد أفراد القوات المسلحة"
+    },
+    {
+     "value": "PRISONER",
+     "label": "مسجون"
+    },
+    {
+     "value": "ABROAD_KNOWN",
+     "label": "مقيم بالخارج له موطن معلوم"
+    },
+    {
+     "value": "ABROAD_UNKNOWN",
+     "label": "ليس له موطن معلوم"
+    }
+   ]
+  },
+  {
+   "key": "ministerTitle",
+   "label": "الوزارة (وزير ...)",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "MINISTER"
+    ]
+   }
+  },
+  {
+   "key": "stateLitigationAddress",
+   "label": "عنوان هيئة قضايا الدولة",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "MINISTER"
+    ]
+   }
+  },
+  {
+   "key": "companyRepName",
+   "label": "اسم رئيس مجلس الإدارة",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "COMPANY"
+    ]
+   }
+  },
+  {
+   "key": "companyName",
+   "label": "اسم الشركة",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "COMPANY"
+    ]
+   }
+  },
+  {
+   "key": "companyHqAddress",
+   "label": "عنوان مركز إدارة الشركة",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "COMPANY"
+    ]
+   }
+  },
+  {
+   "key": "foreignAgentName",
+   "label": "اسم وكيل الشركة / الممثل القانوني",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "FOREIGN_COMPANY"
+    ]
+   }
+  },
+  {
+   "key": "foreignCompanyName",
+   "label": "اسم الشركة الأجنبية",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "FOREIGN_COMPANY"
+    ]
+   }
+  },
+  {
+   "key": "foreignCompanyEgyptAddress",
+   "label": "عنوان مركز الإدارة في مصر",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "FOREIGN_COMPANY"
+    ]
+   }
+  },
+  {
+   "key": "soldierName",
+   "label": "اسم فرد القوات المسلحة",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "ARMED_FORCES"
+    ]
+   }
+  },
+  {
+   "key": "militaryUnitAddress",
+   "label": "الوحدة العسكرية ومقرها",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "ARMED_FORCES"
+    ]
+   }
+  },
+  {
+   "key": "prosecutionName",
+   "label": "النيابة المختصة",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "ARMED_FORCES",
+     "ABROAD_KNOWN"
+    ]
+   }
+  },
+  {
+   "key": "prosecutionCourt",
+   "label": "المحكمة التي بها مقر النيابة",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "ARMED_FORCES",
+     "ABROAD_KNOWN"
+    ]
+   }
+  },
+  {
+   "key": "prisonName",
+   "label": "اسم السجن",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "PRISONER"
+    ]
+   }
+  },
+  {
+   "key": "prisonAddress",
+   "label": "عنوان السجن",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "PRISONER"
+    ]
+   }
+  },
+  {
+   "key": "prisonerName",
+   "label": "اسم المسجون",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "PRISONER"
+    ]
+   }
+  },
+  {
+   "key": "abroadName",
+   "label": "اسم المعلن إليه",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "ABROAD_KNOWN"
+    ]
+   }
+  },
+  {
+   "key": "abroadCountry",
+   "label": "الدولة",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "ABROAD_KNOWN"
+    ]
+   }
+  },
+  {
+   "key": "abroadAddress",
+   "label": "العنوان بالخارج",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "ABROAD_KNOWN"
+    ]
+   }
+  },
+  {
+   "key": "respondentName",
+   "label": "اسم المعلن إليه",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "ABROAD_UNKNOWN"
+    ]
+   }
+  },
+  {
+   "key": "lastKnownAddress",
+   "label": "آخر موطن معلوم",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "ABROAD_UNKNOWN"
+    ]
+   }
+  },
+  {
+   "key": "publicProsecutionAddress",
+   "label": "مقر النيابة العامة",
+   "type": "text",
+   "required": false,
+   "group": "بيانات المعلن إليه",
+   "showIf": {
+    "field": "addresseeType",
+    "in": [
+     "ABROAD_UNKNOWN"
+    ]
+   }
+  },
+  {
+   "key": "noticeBody",
+   "label": "موضوع الإعلان (وأعلنته بالآتي)",
+   "type": "textarea",
+   "required": true,
+   "group": "الموضوع"
+  }
+ ],
+ "blocks": {
+  "addresseeType": {
+   "MINISTER": "السيد/ وزير {{ministerTitle}} بصفته، ويعلن سيادته بالإدارة القانونية بهيئة قضايا الدولة الكائنة في {{stateLitigationAddress}}\nمخاطبًا مع/ {{servedWith}}\nالسند القانوني: المادة (١٣) البند (١) من قانون المرافعات.",
+   "COMPANY": "السيد/ {{companyRepName}} بصفته رئيس مجلس إدارة شركة/ {{companyName}} ويعلن سيادته في مركز إدارة الشركة الكائن في {{companyHqAddress}}\nمخاطبًا مع/ {{servedWith}}\nالسند القانوني: المادة (١٣) البند (٣، ٤) من قانون المرافعات.",
+   "FOREIGN_COMPANY": "السيد/ {{foreignAgentName}} بصفته وكيل شركة {{foreignCompanyName}} ويعلن سيادته في مركز إدارة الشركة في مصر أو الممثل القانوني للشركة/ الكائن في {{foreignCompanyEgyptAddress}}\nمخاطبًا مع/ {{servedWith}}\nالسند القانوني: المادة (١٣) البند (٥) من قانون المرافعات.",
+   "ARMED_FORCES": "السيد/ {{soldierName}} ويعلن بوحدته العسكرية ومقرها {{militaryUnitAddress}} ويعلن في مواجهة السيد وكيل نيابة/ {{prosecutionName}} ويعلن سيادته بمقر عمله بمحكمة/ {{prosecutionCourt}} وذلك لقيام سيادته بتسليم هذا الإعلان إلى الإدارة المختصة بالقوات المسلحة\nمخاطبًا مع/ {{servedWith}}\nالسند القانوني: المادة (١٣) البند (٦) من قانون المرافعات.",
+   "PRISONER": "السيد/ مأمور سجن {{prisonName}} الكائن في {{prisonAddress}} وذلك لتسليمها هذا الإعلان إلى المسجون/ {{prisonerName}}\nمخاطبًا مع/ {{servedWith}}\nوفي حالة الجنايات يعلن القيم المعين عليه من قبل المحكمة.\nالسند القانوني: المادة (١٣) البند (٧) من قانون المرافعات.",
+   "ABROAD_KNOWN": "السيد وكيل نيابة/ {{prosecutionName}} ويعلن سيادته بمقر عمله بمحكمة/ {{prosecutionCourt}} وذلك لقيام سيادته بتسليم هذا الإعلان إلى السيد/ {{abroadName}} المقيم في دولة {{abroadCountry}} وعنوانه بها هو/ {{abroadAddress}} على أن يكون الإعلان بواسطة وزارة الخارجية بالطرق الدبلوماسية\nمخاطبًا مع/ {{servedWith}}\nالسند القانوني: المادة (١٣) البند (٩) من قانون المرافعات.",
+   "ABROAD_UNKNOWN": "السيد/ {{respondentName}} وآخر موطن معلوم له هو {{lastKnownAddress}} ويعلن في مواجهة النيابة العامة والكائن مقرها في {{publicProsecutionAddress}}\nمخاطبًا مع/ {{servedWith}}\nالسند القانوني: المادة (١٣) البند (١٠) من قانون المرافعات."
+  }
+ },
+ "body": "إنه في يوم {{serviceDay}} الموافق {{serviceDate}}\nبناءً على طلب السيد/ {{requesterName}} المقيم في {{requesterAddress}}\nومحله المختار مكتب الأستاذ/ {{lawyerName}} المحامي الكائن في {{lawyerOfficeAddress}}\nأنا {{bailiffName}} محضر محكمة {{bailiffCourt}} الجزئية قد انتقلت في التاريخ المذكور أعلاه وأعلنت:\n{{block:addresseeType}}\n\nوأعلنته بالآتي\n{{noticeBody}}\n\nولأجل/\n\n— الموضوع: إعلان — بناءً على طلب الطالب وتحت مسئوليته — وكيل الطالب: أ/ {{lawyerName}} المحامي",
+ "notes": "النموذج الأصلي يعرض صيغ \"المعلن إليه\" فقط؛ موضوع الإعلان يكتبه المستخدم.",
+ "category": "COURT_PAPERS",
+ "categoryLabel": "صحف الدعاوى والإعلانات",
+ "credits": 1,
+ "active": true,
+ "version": 1,
+ "fixedQuotes": true,
+ "source": "البوابة القانونية للتشريعات المصرية — مركز المعلومات ودعم اتخاذ القرار (elpai.idsc.gov.eg)",
+ "draftingInstructions": "املأ القيم كما أدخلها المستخدم حرفيًا ولا تغيّر النصوص القانونية المقتبسة داخل النموذج. الحقول الفارغة الخاصة بالمحضر تبقى نقاطًا. لا تضف مواد أو أحكامًا غير موجودة في المصادر المسترجعة؛ إن طُلبت صياغة الأسباب فاكتبها من وقائع المستخدم فقط مع الاستشهاد بالمكتبة. أرجع ملاحظات مراجعة مختصرة (مواعيد الإعلان، الاختصاص، المستندات المطلوبة)."
+}

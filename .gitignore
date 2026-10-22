@@ -1,0 +1,16 @@
+# secrets — never commit
+backend/.env
+backend/.env.local
+**/service-account*.json
+supabase/.temp/
+apps/android/keystore.properties
+*.jks
+*.keystore
+# build output
+node_modules/
+dist/
+build/
+.gradle/
+*.apk
+__pycache__/
+backend/data/

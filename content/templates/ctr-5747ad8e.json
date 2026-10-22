@@ -1,0 +1,104 @@
+{
+ "id": "ctr-5747ad8e",
+ "name": "اخلاء طرف",
+ "category": "HR",
+ "categoryLabel": "شئون العاملين",
+ "legalBasis": [
+  "قانون العمل رقم 14 لسنة 2025"
+ ],
+ "fields": [
+  {
+   "key": "date1",
+   "label": "تاريخ — إنه في يوم الموافق",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f2",
+   "label": "إنه في يوم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "date3",
+   "label": "تاريخ — بالمؤسسة في يوم الموافق",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "date4",
+   "label": "تاريخ — م حتى يوم الموافق",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f5",
+   "label": "قام السيد",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f6",
+   "label": "للعمل بالمؤسسة في يوم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f7",
+   "label": "الموافق م حتى يوم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f8",
+   "label": "الاسم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f9",
+   "label": "الوظيفة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f10",
+   "label": "الدرجة الوظيفية",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f11",
+   "label": "رقم الهاتف",
+   "type": "phone",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f12",
+   "label": "بيان 12",
+   "type": "textarea",
+   "required": false,
+   "defaultValue": "............"
+  }
+ ],
+ "body": "إنه في يوم {{f2}} الموافق {{date1}} م.\nقام السيد: {{f5}} والذي التحق للعمل بالمؤسسة في يوم {{f6}} الموافق {{date3}} م، حتى يوم {{f7}} الموافق {{date4}} م.\nبإخلاء طرفه لدى المؤسسة ولا توجد عليه أي التزامات مالية أو عُهد تجاه الشركة ويعتبر هذا الإخلاء إبراءً لذمته من أي التزامات.\nمقدمه لسيادتكم،\nالاسم: {{f8}}\nالوظيفة: {{f9}}\nالدرجة الوظيفية: {{f10}}\nرقم الهاتف: {{f11}}\n\n توقيع المسؤول\n\n {{f12}}",
+ "description": "نموذج اخلاء طرف قابل للملء — 12 خانة.",
+ "credits": 1,
+ "active": true,
+ "sort": 134,
+ "version": 1,
+ "autoFields": true,
+ "source": "نماذج المستخدم (Word) — حُوّلت آليًا: كل فراغ منقّط أصبح خانة",
+ "draftingInstructions": "املأ الخانات بقيم المستخدم حرفيًا وأبقِ البنود كما هي. الخانات الفارغة تبقى نقاطًا. راجع اتساق الأسماء والمبالغ والتواريخ، ونبّه لأي بند يخالف نصًا آمرًا في المصادر المسترجعة دون اختلاق أرقام مواد."
+}

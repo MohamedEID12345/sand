@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand (mode independent) -->
+    <color name="brand_navy">#0F1E3D</color>
+    <color name="brand_navy_2">#1B3A6B</color>
+    <color name="brand_gold">#D4AF63</color>
+    <color name="brand_gold_dark">#B8913F</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="ic_launcher_background">#12264A</color>
+
+    <!-- Light scheme -->
+    <color name="lg_primary">#1B3A6B</color>
+    <color name="lg_on_primary">#FFFFFF</color>
+    <color name="lg_primary_container">#DCE6F8</color>
+    <color name="lg_on_primary_container">#0B1F42</color>
+    <color name="lg_secondary">#A9802F</color>
+    <color name="lg_on_secondary">#FFFFFF</color>
+    <color name="lg_secondary_container">#F6ECD6</color>
+    <color name="lg_on_secondary_container">#3D2C07</color>
+    <color name="lg_tertiary">#5A4FCF</color>
+    <color name="lg_on_tertiary">#FFFFFF</color>
+    <color name="lg_tertiary_container">#E7E4FF</color>
+    <color name="lg_on_tertiary_container">#1E1760</color>
+    <color name="lg_background">#F5F7FB</color>
+    <color name="lg_on_background">#121826</color>
+    <color name="lg_surface">#FFFFFF</color>
+    <color name="lg_on_surface">#121826</color>
+    <color name="lg_surface_variant">#EEF1F7</color>
+    <color name="lg_on_surface_variant">#5B6475</color>
+    <color name="lg_surface_container_lowest">#FFFFFF</color>
+    <color name="lg_surface_container_low">#F8F9FC</color>
+    <color name="lg_surface_container">#F2F4F9</color>
+    <color name="lg_surface_container_high">#ECEFF5</color>
+    <color name="lg_surface_container_highest">#E6EAF1</color>
+    <color name="lg_outline">#C9D1DE</color>
+    <color name="lg_outline_variant">#E4E8EF</color>
+    <color name="lg_error">#C62828</color>
+    <color name="lg_on_error">#FFFFFF</color>
+    <color name="lg_error_container">#FDECEC</color>
+    <color name="lg_on_error_container">#5F1111</color>
+    <color name="lg_inverse_surface">#1C2333</color>
+    <color name="lg_inverse_on_surface">#EEF1F7</color>
+    <color name="lg_card">#FFFFFF</color>
+    <color name="lg_scrim">#66000000</color>
+
+    <!-- Semantic tones (badges, states) -->
+    <color name="tone_success">#1E8E5A</color>
+    <color name="tone_success_bg">#E3F5EC</color>
+    <color name="tone_warning">#A86A12</color>
+    <color name="tone_warning_bg">#FDF1DC</color>
+    <color name="tone_danger">#C73B3B</color>
+    <color name="tone_danger_bg">#FCE8E8</color>
+    <color name="tone_info">#2563EB</color>
+    <color name="tone_info_bg">#E5EDFD</color>
+    <color name="tone_neutral">#5B6475</color>
+    <color name="tone_neutral_bg">#EEF1F7</color>
+    <color name="tone_gold">#9A7427</color>
+    <color name="tone_gold_bg">#F7EED9</color>
+    <color name="tone_ai">#5A4FCF</color>
+    <color name="tone_ai_bg">#ECEAFE</color>
+
+    <!-- Chat -->
+    <color name="bubble_user">#1B3A6B</color>
+    <color name="bubble_user_text">#FFFFFF</color>
+    <color name="bubble_ai">#FFFFFF</color>
+    <color name="bubble_ai_text">#121826</color>
+</resources>

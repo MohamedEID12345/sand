@@ -1,0 +1,825 @@
+{
+ "id": "ctr-f2cd5461",
+ "name": "عقد وصية بقسمة أعيان التركة على ورثة الموصي",
+ "category": "GIFTS_WILLS",
+ "categoryLabel": "الهبة والوصية",
+ "legalBasis": [
+  "القانون المدني — الهبة (م 486 وما بعدها)"
+ ],
+ "fields": [
+  {
+   "key": "date1",
+   "label": "تاريخ — يوم الموافق",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f2",
+   "label": "أنه في يوم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f3",
+   "label": "بمدينة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "date4",
+   "label": "تاريخ — ي بتاريخ",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f5",
+   "label": "أقر أنا",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f6",
+   "label": "الجنسية",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f7",
+   "label": "رقم قومي",
+   "type": "national_id",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f8",
+   "label": "بتاريخ سجل مدني",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f9",
+   "label": "مقيم في",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "date10",
+   "label": "تاريخ — ي بتاريخ",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f11",
+   "label": "السيد",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f12",
+   "label": "الجنسية (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f13",
+   "label": "رقم قومي (2)",
+   "type": "national_id",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f14",
+   "label": "بتاريخ سجل مدني (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f15",
+   "label": "مقيم في (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "date16",
+   "label": "تاريخ — ي بتاريخ",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f17",
+   "label": "السيد (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f18",
+   "label": "الجنسية (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f19",
+   "label": "رقم قومي (3)",
+   "type": "national_id",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f20",
+   "label": "بتاريخ سجل مدني (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f21",
+   "label": "مقيم في (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "date22",
+   "label": "تاريخ — ي بتاريخ",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f23",
+   "label": "السيد (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f24",
+   "label": "الجنسية (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f25",
+   "label": "رقم قومي (4)",
+   "type": "national_id",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f26",
+   "label": "بتاريخ سجل مدني (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f27",
+   "label": "مقيم في (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "date28",
+   "label": "تاريخ — ي بتاريخ",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f29",
+   "label": "السيد (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f30",
+   "label": "الجنسية (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f31",
+   "label": "رقم قومي (5)",
+   "type": "national_id",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f32",
+   "label": "بتاريخ سجل مدني (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f33",
+   "label": "مقيم في (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "date34",
+   "label": "تاريخ — ي بتاريخ",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f35",
+   "label": "السيد (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f36",
+   "label": "الجنسية (6)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f37",
+   "label": "رقم قومي (6)",
+   "type": "national_id",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f38",
+   "label": "بتاريخ سجل مدني (6)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f39",
+   "label": "مقيم في (6)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f40",
+   "label": "بيان 40",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f41",
+   "label": "بيان 41",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f42",
+   "label": "بيان 42",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f43",
+   "label": "بيان 43",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f44",
+   "label": "بيان 44",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f45",
+   "label": "أقر أنا (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f46",
+   "label": "تختص زوجتي السيدة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f47",
+   "label": "بالعقار المملوك لي رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f48",
+   "label": "الكائن",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f49",
+   "label": "يحده من الناحية البحرية",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f50",
+   "label": "والقبلية",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f51",
+   "label": "والشرقية",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f52",
+   "label": "والغربية",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f53",
+   "label": "والمكون من",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f54",
+   "label": "بالمكلفة رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f55",
+   "label": "باسم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f56",
+   "label": "يختص أبني الاكبر",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f57",
+   "label": "المملوك لي الكائن بشارع",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f58",
+   "label": "والمقيد بالسجل التجاري رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f59",
+   "label": "كما يختص بالعقار رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f60",
+   "label": "الكائن بشارع",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f61",
+   "label": "قسم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f62",
+   "label": "محافظة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f63",
+   "label": "والمكون من (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f64",
+   "label": "يحده من الناحية البحرية (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f65",
+   "label": "والقبلية (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f66",
+   "label": "والشرقية (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f67",
+   "label": "والغربية (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f68",
+   "label": "والمكون من (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f69",
+   "label": "بالمكلفة رقم (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f70",
+   "label": "باسم (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f71",
+   "label": "ويختص أيضا بالسيارة رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f72",
+   "label": "أبني الاصغر بالعقار رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f73",
+   "label": "الكائن بشارع (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f74",
+   "label": "قسم (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f75",
+   "label": "محافظة (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f76",
+   "label": "والمكون من (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f77",
+   "label": "يحده من الناحية البحرية (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f78",
+   "label": "والقبلية (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f79",
+   "label": "والشرقية (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f80",
+   "label": "والغربية (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f81",
+   "label": "والمكون من (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f82",
+   "label": "بالمكلفة رقم (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f83",
+   "label": "باسم (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f84",
+   "label": "تختص ابنتي بالعقار رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f85",
+   "label": "الكائن بشارع (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f86",
+   "label": "قسم (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f87",
+   "label": "محافظة (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f88",
+   "label": "والذي يحده من",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f89",
+   "label": "يحده من الناحية البحرية (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f90",
+   "label": "والقبلية (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f91",
+   "label": "والشرقية (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f92",
+   "label": "والغربية (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f93",
+   "label": "والمكون من (6)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f94",
+   "label": "بالمكلفة رقم (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f95",
+   "label": "باسم (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f96",
+   "label": "تختص والدتي السيدة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f97",
+   "label": "بالعقار المملوك لي رقم (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f98",
+   "label": "الكائن (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f99",
+   "label": "يحده من الناحية البحرية (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f100",
+   "label": "والقبلية (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f101",
+   "label": "والشرقية (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f102",
+   "label": "والغربية (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f103",
+   "label": "والمكون من (7)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f104",
+   "label": "بالمكلفة رقم (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f105",
+   "label": "باسم (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f106",
+   "label": "الطرف الأول",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f107",
+   "label": "الطرف الثاني",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f108",
+   "label": "التوقيع",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f109",
+   "label": "التوقيع (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f110",
+   "label": "الطرف الثالث",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f111",
+   "label": "الطرف الرابع",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f112",
+   "label": "التوقيع (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f113",
+   "label": "التوقيع (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f114",
+   "label": "الطرف الخامس",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f115",
+   "label": "التوقيع (5)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  }
+ ],
+ "body": "أنه في يوم {{f2}} الموافق {{date1}}\n بمدينة {{f3}}\nأقر أنا {{f5}} الجنسية {{f6}} رقم قومي {{f7}} بتاريخ {{date4}}   سجل مدني {{f8}} مقيم في {{f9}}\nبأنني قد أوصيت لورثتي:\nالسيد / {{f11}} الجنسية {{f12}} رقم قومي {{f13}} بتاريخ {{date10}}   سجل مدني {{f14}} مقيم في {{f15}}\nالسيد / {{f17}} الجنسية {{f18}} رقم قومي {{f19}} بتاريخ {{date16}}   سجل مدني {{f20}} مقيم في {{f21}}\nالسيد / {{f23}} الجنسية {{f24}} رقم قومي {{f25}} بتاريخ {{date22}}   سجل مدني {{f26}} مقيم في {{f27}}\nالسيد / {{f29}} الجنسية {{f30}} رقم قومي {{f31}} بتاريخ {{date28}}   سجل مدني {{f32}} مقيم في {{f33}}\nالسيد / {{f35}} الجنسية {{f36}} رقم قومي {{f37}} بتاريخ {{date34}}   سجل مدني {{f38}} مقيم في {{f39}}\n\nبالأعيان المملوك لي وذلك وفقا لما يلي: -\nالتمهيد\nيقر الموصي بتقسيم التركة من أراضي وعقارات ومنقولات بين ورثته الشرعيين المنحصرين في:\n1- {{f40}}\n2- {{f41}}\n3- {{f42}}\n4- {{f43}}\n5- {{f44}}\n\nالبند الأول\nيعتبر التمهيد السابق جزء لا يتجزأ من هذا العقد.\nالبند الثاني\n(اقرار الموصي)\nأقر أنا/ {{f45}} أنه لا وارث لي غير من ذكروا بالبند السابق وفيهم وحدهم ينحصر أرثي\nالبند الثالث\n(الشيوع)\nالاموال التي اكتسبها بعد ابرام هذه الوصية تؤول شائعة الى ورثتي سالفي الذكر وتوزع وتقسم عليهم طبقا لقواعد الميراث بالقانون المصري ما لم أبرم وصية جديدة أعيد تقسيم تركتي بموجبها.\nالبند الرابع\n(القسمة)\nتتم القسمة عينًا وفقًا لما يلي:\nتختص زوجتي السيدة / {{f46}} بالعقار المملوك لي رقم {{f47}} الكائن {{f48}} والذي يحده من الناحية البحرية {{f49}} والقبلية {{f50}} والشرقية {{f51}} والغربية {{f52}} والمكون من {{f53}} بالمكلفة رقم {{f54}} باسم {{f55}}\n2- يختص أبني الاكبر {{f56}} بالمتجر المملوك لي الكائن بشارع {{f57}} والمقيد بالسجل التجاري رقم {{f58}} مشتملا على ما به من بضائع وحقوق متعلقة به، كما يختص بالعقار رقم {{f59}} الكائن بشارع {{f60}} قسم {{f61}} محافظة {{f62}} والمكون من {{f63}} والذي يحده من الناحية البحرية {{f64}} والقبلية {{f65}} والشرقية {{f66}} والغربية {{f67}} والمكون من {{f68}} بالمكلفة رقم {{f69}} باسم {{f70}} ويختص أيضا بالسيارة رقم {{f71}}\n3- يختص أبني الاصغر بالعقار رقم {{f72}} الكائن بشارع {{f73}} قسم {{f74}} محافظة {{f75}} والمكون من {{f76}} والذي يحده من الناحية البحرية {{f77}} والقبلية {{f78}} والشرقية {{f79}} والغربية {{f80}} والمكون من {{f81}} بالمكلفة رقم {{f82}} باسم {{f83}}\n4- تختص ابنتي بالعقار رقم {{f84}} الكائن بشارع {{f85}} قسم {{f86}} محافظة {{f87}} والمكون من\n{{f88}} والذي يحده من الناحية البحرية {{f89}} والقبلية {{f90}} والشرقية {{f91}} والغربية {{f92}} والمكون من {{f93}} بالمكلفة رقم {{f94}} باسم {{f95}}\n\n5- تختص والدتي السيدة / {{f96}} بالعقار المملوك لي رقم {{f97}} الكائن {{f98}} والذي يحده من الناحية البحرية {{f99}} والقبلية {{f100}} والشرقية {{f101}} والغربية {{f102}} والمكون من {{f103}} بالمكلفة رقم {{f104}} باسم {{f105}}\nالبند الخامس\n(نفاذ القسمة)\nلا تعتبر هذه القسمة نافذة الا بوفاتي، أما قبل ذلك فيكون لي الحق في الرجوع فيها أو تعديلها في أي وقت دون أن يكون لاحد ممن ذكروا بتمهيد هذا العقد الاعتراض على ذلك.\nالبند السادس\n(التصرفات)\nفي حالة تصرفي في عين من الاعيان السابقة، يخرج من كان مختصا بها من القسمة التي تضمنتها هذه الوصية ويستمر الباقون على ما خصص لهم على أن يستحق من خرج من القسمة حصته الميراثي من الاموال التي اكتسبها فيما بعد، فان تبقى شيء منها، كان مشاعا بين الجميع بعد موتى، أما ان قلت تلك الاموال عن هذه الحصة، بطلت القسمة وعادت جميع الاموال الى الشيوع.\nالبند السابع\n(الرهن)\nفي حالة أبرامي عقد رهن متعلق بعقار من الاعيان المبينة بالبند الرابع، ونفذ الدائن المرتهن عليه أو قام من اختص به بتطهيره، كان له الرجوع على الباقين كل بما يخصه من الدين محسوبا بقدر حصته الميراثي\nالبند الثامن\n(وفاة الموصي اليه)\nإذا توفى من قبلي أحد ممن ذكروا بالتمهيد، آلت حصته المقررة التي اختص بها شائعة الى باقي الورثة طبقا لقواعد الميراث بالقانون المصري.\nالبند التاسع\n(الموصي لهم)\n- يضمن الموصي لهم بعضهم لبعض ما قد يقع من تعرض قانوني أو استحقاق، ويكون كل منهم ملزما بنسبة حصته أن يعوض مستحق الضمان، وتكون العبرة في تقدير قيمة العين وقت نفاذ القسمة بوفاة الموصي. فان كان أحد الموصي له قد أصبح معسرا عند استحقاق الضمان وزع القدر الذي يلزمه على مستحق الضمان وباقي المتقاسمين غير المعسرين كل بقدر حصته.\n\n- لا يجوز لأي من الموصي لهم الطعن على القسمة التي تضمنتها هذه الوصية بالغبن وليس له الحق في طلب نقضها أو الرجوع على باقي الموصي لهم لهذا السبب\n- لا يجوز لأي من الموصي لهم الطعن على هذه القسمة إذا جاوز حصة أحدهم فيها قدر ما يخصه في الميراث طالما لم تجاوز الزيادة ثلث قيمة التركة مقدرة وقت القبض\nالبند العاشر\n(الضمان)\nيسقط الضمان المبين بالبند السابق إذا كان الاستحقاق راجعا الى خطأ مستحق الضمان.\nالبند الحادي عشر\n(التزام الموصي له)\nيلتزم الموصي له الذي يواجه باستحقاق الغير للعين التي اختص بها أن يخطر باقي الموصي لهم في الوقت المناسب أو يدخلهم في الدعوى المقامة ضده والا سقط حقه في الضمان.\nالبند الثاني عشر\n(نسخ العقد)\nحرر هذا العقد من خمس نسخ يحتوي على أثني عشر بندا، وقد استلم كل طرف نسخة من العقد للعمل بموجبها بعد الموافقة على مضمونه والتوقيع عليه\nالطرف الأول: {{f106}} الطرف الثاني: {{f107}}\nالتوقيع: {{f108}} التوقيع: {{f109}}\n\nالطرف الثالث: {{f110}} الطرف الرابع: {{f111}}\nالتوقيع: {{f112}} التوقيع: {{f113}}\n\nالطرف الخامس: {{f114}}\nالتوقيع: {{f115}}\n\nهذه الوثائق لا تصلح الا لأغراض الاستهداء والاسترشاد فقط، ولا ينبغي اعتبارها بديلًا عن الاستشارات القانونية المختصة و/أو غير ذلك من الاعمال الصادرة من محام محترف ومرخص له بمزاولة المهنة، ولن تتحمل البوابة أي مسؤولية تنشأ عن أي خسارة أو ضرر أياً كانت طبيعته (مباشرة أو غير مباشرة أو تبعية أو غير ذلك) مما قد يحدث جراء استخدام العملاء (أو إساءة استخدامهم) لتلك الوثائق المقدمة علي موقعها.",
+ "description": "نموذج عقد وصية بقسمة أعيان التركة على ورثة الموصي قابل للملء — 115 خانة.",
+ "credits": 1,
+ "active": true,
+ "sort": 200,
+ "version": 1,
+ "autoFields": true,
+ "source": "نماذج المستخدم (Word) — حُوّلت آليًا: كل فراغ منقّط أصبح خانة",
+ "draftingInstructions": "املأ الخانات بقيم المستخدم حرفيًا وأبقِ البنود كما هي. الخانات الفارغة تبقى نقاطًا. راجع اتساق الأسماء والمبالغ والتواريخ، ونبّه لأي بند يخالف نصًا آمرًا في المصادر المسترجعة دون اختلاق أرقام مواد."
+}

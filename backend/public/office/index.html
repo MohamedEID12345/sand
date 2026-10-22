@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بوابة المكتب — سند Sand</title><link rel="stylesheet" href="../admin/theme.css">
+<style>.fields td input,.fields td select{width:100%}.vars button{margin:2px}.preview{white-space:pre-wrap;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px;line-height:2}</style>
+</head>
+<body><div id="app"></div><div id="toast"></div>
+<script>
+const API = location.pathname.replace(/\/(admin|office)(\/.*)?$/, '') + '/api/v1';
+let token = sessionStorage.getItem('lg_office_token'), boot = null, editing = null;
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const toast = (m) => { const t = document.getElementById('toast'); t.textContent = m; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 3000); };
+async function call(method, path, body, isForm) {
+  const r = await fetch(API + path, { method, headers: { ...(isForm ? {} : { 'Content-Type': 'application/json' }), ...(token ? { Authorization: 'Bearer ' + token } : {}) }, body: isForm ? body : body ? JSON.stringify(body) : undefined });
+  const j = await r.json().catch(() => ({}));
+  if (r.status === 401) { logout(); throw new Error('انتهت الجلسة'); }
+  if (!r.ok) throw new Error(j.error?.message + (j.error?.details?.fields ? ' — ' + Object.entries(j.error.details.fields).map(([k, v]) => k + ': ' + v).join('، ') : '') || 'خطأ');
+  return j;
+}
+const run = (fn) => (...a) => fn(...a).catch((e) => toast(e.message));
+const canManage = () => (boot?.permissions || []).some((p) => p === '*' || p === 'office.manage');
+function logout() { token = null; boot = null; sessionStorage.removeItem('lg_office_token'); render(); }
+const TYPES = [['text', 'نص'], ['textarea', 'نص طويل'], ['date', 'تاريخ'], ['number', 'رقم'], ['money', 'مبلغ'], ['national_id', 'رقم قومي'], ['phone', 'موبايل'], ['email', 'بريد'], ['select', 'اختيار']];
+
+function render() {
+  const app = document.getElementById('app');
+  if (!token) {
+    app.innerHTML = `<div class="login"><div class="card"><div class="mark">د</div><h2 style="margin:0 0 4px">بوابة المكتب</h2><p class="mute">نماذج مكتبك الخاصة — تظهر لكل أعضاء المكتب في التطبيق ضمن «نماذج مكتبي».</p>
+      <input id="id" placeholder="البريد أو الموبايل"><input id="pw" type="password" placeholder="كلمة المرور"><button class="btn gold" id="go" style="width:100%">دخول</button></div></div>`;
+    document.getElementById('go').onclick = run(async () => {
+      const r = await call('POST', '/auth/login', { identifier: document.getElementById('id').value, password: document.getElementById('pw').value, deviceId: 'office-portal' });
+      token = r.accessToken; sessionStorage.setItem('lg_office_token', token); render();
+    });
+    return;
+  }
+  app.innerHTML = `<div class="shell"><aside><div class="logo"><div class="mark">س</div><div><b>سند</b><small id="on">بوابة المكتب</small></div></div>
+    <button class="on"><span class="ico">▤</span>نماذج مكتبي</button></aside>
+    <div><div class="top"><h2>نماذج مكتبي</h2><span class="sp"></span><span class="chip" id="who"></span><button class="btn sm ghost" id="out">خروج</button></div><main id="main"></main></div></div>`;
+  document.getElementById('out').onclick = logout;
+  run(async () => {
+    if (!boot) boot = await call('GET', '/me/bootstrap');
+    document.getElementById('who').textContent = `${boot.user.name} — ${boot.user.officeRoleLabel || ''}`;
+    document.getElementById('on').textContent = boot.user.officeName || 'بوابة المكتب';
+    await list(document.getElementById('main'));
+  })();
+}
+async function list(el) {
+  const r = await call('GET', '/office/templates');
+  el.innerHTML = `${canManage() ? `<div class="card"><h3>إضافة نموذج</h3><div class="row"><div class="drop" style="flex:1">ارفع عقدك أو صيغتك بصيغة Word — كل فراغ منقّط (……) يتحول لخانة<br>
+      <input type="file" id="f" accept=".docx"></div></div><div class="row"><button class="btn gold" id="up">رفع وتحويل</button><span class="sp"></span><button class="btn ghost" id="nw">إنشاء يدويًا</button></div></div>`
+      : `<div class="card"><p class="mute">عرض فقط — إضافة النماذج لمالك/مدير المكتب.</p></div>`}
+    <div class="card"><h3>النماذج (${r.items.length})</h3><div class="tbl"><table><tr><th>الاسم</th><th>الخانات</th><th>الحالة</th><th>آخر تعديل</th><th></th></tr>
+    ${r.items.map((t) => `<tr><td>${esc(t.name)}</td><td>${t.fields.length}</td><td><span class="pill ${t.active ? 'ok' : ''}">${t.active ? 'مفعّل' : 'موقوف'}</span></td>
+      <td>${esc(String(t.updatedAt).slice(0, 10))}</td><td><button class="btn sm" data-e="${t.id}">فتح</button></td></tr>`).join('') || '<tr><td colspan="5" class="mute">لا توجد نماذج بعد</td></tr>'}</table></div></div><div id="ed"></div>`;
+  if (canManage()) {
+    el.querySelector('#up').onclick = run(async () => {
+      const f = el.querySelector('#f').files[0]; if (!f) return toast('اختر ملف Word');
+      const fd = new FormData(); fd.append('file', f);
+      const t = await call('POST', '/office/templates/upload', fd, true); toast(`تم: ${t.fields.length} خانة`); await list(el); editor(el.querySelector('#ed'), t);
+    });
+    el.querySelector('#nw').onclick = () => editor(el.querySelector('#ed'), { name: '', description: '', fields: [{ key: 'name', label: 'الاسم', type: 'text', required: true }], body: 'أقر أنا {{name}} …', active: true });
+  }
+  el.querySelectorAll('[data-e]').forEach((b) => b.onclick = run(async () => editor(el.querySelector('#ed'), await call('GET', '/office/templates/' + b.dataset.e))));
+}
+function editor(el, t) {
+  editing = JSON.parse(JSON.stringify(t));
+  const ro = !canManage();
+  const draw = () => {
+    el.innerHTML = `<div class="card"><div class="row"><h3 style="margin:0">${t.id ? 'تحرير النموذج' : 'نموذج جديد'}</h3><span class="sp"></span>
+      ${ro ? '' : `<label class="mute"><input type="checkbox" id="ac" ${editing.active !== false ? 'checked' : ''}> مفعّل</label><button class="btn gold" id="sv">حفظ</button>${t.id ? '<button class="btn bad sm" id="dl">حذف</button>' : ''}`}</div>
+      <div class="form"><label>الاسم<input id="nm" value="${esc(editing.name)}" ${ro ? 'disabled' : ''}></label><label>الوصف<input id="ds" value="${esc(editing.description)}" ${ro ? 'disabled' : ''}></label></div>
+      <h3>الخانات</h3><div class="tbl"><table class="fields"><tr><th>المفتاح</th><th>العنوان</th><th>النوع</th><th>إلزامي</th><th>المجموعة</th><th></th></tr>
+      ${editing.fields.map((f, i) => `<tr><td><input data-i="${i}" data-k="key" value="${esc(f.key)}" style="direction:ltr"></td><td><input data-i="${i}" data-k="label" value="${esc(f.label)}"></td>
+        <td><select data-i="${i}" data-k="type">${TYPES.map(([v, l]) => `<option value="${v}" ${f.type === v ? 'selected' : ''}>${l}</option>`).join('')}</select></td>
+        <td><input type="checkbox" data-i="${i}" data-k="required" ${f.required ? 'checked' : ''}></td><td><input data-i="${i}" data-k="group" value="${esc(f.group || '')}"></td>
+        <td>${ro ? '' : `<button class="btn sm ghost" data-x="${i}">✕</button>`}</td></tr>`).join('')}</table></div>
+      ${ro ? '' : '<div class="row" style="margin-top:10px"><button class="btn sm ghost" id="af">+ خانة</button></div>'}
+      <h3>النص</h3><div class="vars">${editing.fields.map((f) => `<button class="btn sm ghost" data-v="${esc(f.key)}">{{${esc(f.key)}}}</button>`).join('')}</div>
+      <textarea class="rtl" id="bd" style="min-height:320px" ${ro ? 'disabled' : ''}>${esc(editing.body)}</textarea>
+      <h3>معاينة</h3><div class="preview" id="pv"></div></div>`;
+    const pv = () => { el.querySelector('#pv').innerHTML = esc(el.querySelector('#bd').value).replace(/\{\{(\w+)\}\}/g, (_m, k) => `<span class="pill warn">${esc(editing.fields.find((f) => f.key === k)?.label || k)}</span>`); };
+    pv(); el.querySelector('#bd').oninput = pv;
+    el.querySelectorAll('[data-i]').forEach((x) => x.onchange = () => { const f = editing.fields[x.dataset.i]; f[x.dataset.k] = x.type === 'checkbox' ? x.checked : x.value; if (x.dataset.k === 'key') draw(); });
+    el.querySelectorAll('[data-v]').forEach((b) => b.onclick = () => { const ta = el.querySelector('#bd'); const p = ta.selectionStart; ta.value = ta.value.slice(0, p) + `{{${b.dataset.v}}}` + ta.value.slice(p); pv(); });
+    if (ro) return;
+    el.querySelectorAll('[data-x]').forEach((b) => b.onclick = () => { editing.body = el.querySelector('#bd').value; editing.fields.splice(+b.dataset.x, 1); draw(); });
+    el.querySelector('#af').onclick = () => { editing.body = el.querySelector('#bd').value; editing.fields.push({ key: 'f' + (editing.fields.length + 1), label: 'خانة جديدة', type: 'text', required: false }); draw(); };
+    el.querySelector('#sv').onclick = run(async () => {
+      const body = { ...editing, name: el.querySelector('#nm').value, description: el.querySelector('#ds').value, body: el.querySelector('#bd').value, active: el.querySelector('#ac').checked };
+      const saved = t.id ? await call('PUT', '/office/templates/' + t.id, body) : await call('POST', '/office/templates', body);
+      toast('تم الحفظ — يظهر الآن في التطبيق'); t = saved; list(document.getElementById('main')).then(() => editor(document.getElementById('ed'), saved));
+    });
+    if (t.id) el.querySelector('#dl').onclick = run(async () => { if (!confirm('حذف النموذج؟')) return; await call('DELETE', '/office/templates/' + t.id); toast('تم الحذف'); list(document.getElementById('main')); });
+  };
+  draw(); el.scrollIntoView({ behavior: 'smooth' });
+}
+render();
+</script>
+</body></html>

@@ -1,0 +1,183 @@
+{
+ "id": "notice-re-service",
+ "name": "إعادة إعلان المدعى عليه (المادة 84/1 مرافعات)",
+ "sort": 25,
+ "description": "إعادة إعلان المدعى عليه الذي تخلف عن الجلسة الأولى ولم يُعلن لشخصه، مع التنبيه بأن الحكم يعتبر حضوريًا.",
+ "legalBasis": [
+  "قانون المرافعات المدنية والتجارية — المادة 84/1"
+ ],
+ "fields": [
+  {
+   "key": "serviceDay",
+   "label": "يوم الإعلان",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "serviceDate",
+   "label": "تاريخ الإعلان",
+   "type": "date",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "bailiffName",
+   "label": "اسم المحضر",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "servedWith",
+   "label": "مخاطبًا مع",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "requesterName",
+   "label": "اسم الطالب",
+   "type": "text",
+   "required": true,
+   "group": "الطالب",
+   "maxLength": 150
+  },
+  {
+   "key": "requesterAddress",
+   "label": "عنوان الطالب",
+   "type": "text",
+   "required": true,
+   "group": "الطالب"
+  },
+  {
+   "key": "lawyerName",
+   "label": "اسم المحامي",
+   "type": "text",
+   "required": true,
+   "group": "المحامي (المحل المختار)"
+  },
+  {
+   "key": "lawyerOfficeAddress",
+   "label": "عنوان مكتب المحامي",
+   "type": "text",
+   "required": true,
+   "group": "المحامي (المحل المختار)"
+  },
+  {
+   "key": "bailiffCourt",
+   "label": "محكمة المحضرين (الجزئية)",
+   "type": "text",
+   "required": true,
+   "group": "المحضرين",
+   "placeholder": "مثال: الزقازيق"
+  },
+  {
+   "key": "respondentName",
+   "label": "اسم المعلن إليه",
+   "type": "text",
+   "required": true,
+   "group": "المعلن إليه"
+  },
+  {
+   "key": "respondentAddress",
+   "label": "عنوان المعلن إليه",
+   "type": "text",
+   "required": true,
+   "group": "المعلن إليه"
+  },
+  {
+   "key": "respondentDistrict",
+   "label": "القسم / المركز",
+   "type": "text",
+   "required": true,
+   "group": "المعلن إليه"
+  },
+  {
+   "key": "respondentGovernorate",
+   "label": "المحافظة",
+   "type": "text",
+   "required": true,
+   "group": "المعلن إليه"
+  },
+  {
+   "key": "caseNumber",
+   "label": "رقم الدعوى",
+   "type": "text",
+   "required": true,
+   "group": "الدعوى"
+  },
+  {
+   "key": "caseYear",
+   "label": "سنة الدعوى",
+   "type": "number",
+   "required": true,
+   "min": 1950,
+   "max": 2100,
+   "group": "الدعوى"
+  },
+  {
+   "key": "courtName",
+   "label": "المحكمة",
+   "type": "text",
+   "required": true,
+   "group": "الدعوى"
+  },
+  {
+   "key": "circuit",
+   "label": "الدائرة",
+   "type": "text",
+   "required": true,
+   "group": "الدعوى"
+  },
+  {
+   "key": "courtAddress",
+   "label": "مقر المحكمة",
+   "type": "text",
+   "required": true,
+   "group": "الدعوى"
+  },
+  {
+   "key": "originalRequests",
+   "label": "الطلبات الواردة بختام صحيفة الدعوى",
+   "type": "textarea",
+   "required": true,
+   "group": "الدعوى"
+  },
+  {
+   "key": "firstHearingDate",
+   "label": "تاريخ الجلسة التي تخلف فيها المدعى عليه",
+   "type": "date",
+   "required": true,
+   "group": "إعادة الإعلان"
+  },
+  {
+   "key": "hearingDay",
+   "label": "يوم الجلسة",
+   "type": "text",
+   "required": true,
+   "group": "الجلسة",
+   "placeholder": "مثال: الأحد"
+  },
+  {
+   "key": "hearingDate",
+   "label": "تاريخ الجلسة",
+   "type": "date",
+   "required": true,
+   "group": "الجلسة"
+  }
+ ],
+ "body": "إنه في يوم {{serviceDay}} الموافق {{serviceDate}}\nبناءً على طلب السيد/ {{requesterName}} المقيم في {{requesterAddress}}\nومحله المختار مكتب الأستاذ/ {{lawyerName}} المحامي الكائن في {{lawyerOfficeAddress}}\nأنا {{bailiffName}} محضر محكمة {{bailiffCourt}} الجزئية قد انتقلت في التاريخ المذكور أعلاه وأعلنت:\nالسيد/ {{respondentName}} المقيم في {{respondentAddress}} قسم {{respondentDistrict}} محافظة {{respondentGovernorate}}\nمخاطبًا مع/ {{servedWith}}\nوأعلنته بالآتي\nأقام الطالب ضد المعلن إليه الدعوى رقم {{caseNumber}} لسنة {{caseYear}} أمام محكمة {{courtName}} الدائرة ({{circuit}}) طالبًا في ختام صحيفة افتتاحها الحكم له بـ {{originalRequests}}.\nوتحدد لنظر الدعوى جلسة {{firstHearingDate}}، وبتلك الجلسة قررت المحكمة التأجيل لإعادة إعلان المدعى عليه لجلسة {{hearingDate}} لتخلفه عن الحضور، إعمالًا لنص المادة ٨٤/١ من قانون المرافعات التي تنص على أنه:\n\"إذا تخلف المدعى عليه وحده في الجلسة الأولى وكانت صحيفة الدعوى قد أعلنت لشخصه حكمت المحكمة في الدعوى فإذا لم يكن قد أعلن لشخصه كان على المحكمة في غير الدعاوى المستعجلة تأجيل نظر القضية إلى جلسة تالية يعلن المدعى بها الخصم الغائب ويعتبر الحكم في الدعوى في الحالتين حكمًا حضوريًا.\"\nوحيث يهم الطالب تنفيذ قرار المحكمة.\n\nبناءً عليه\nأنا المحضر سالف الذكر قد انتقلت في التاريخ المذكور أعلاه إلى حيث المعلن إليه وسلمته صورة من هذا الإعلان وكلفته بالحضور أمام محكمة {{courtName}} الكائن مقرها في {{courtAddress}} أمام الدائرة ({{circuit}}) وذلك بجلستها العلنية التي ستنعقد في تمام الساعة التاسعة وما بعدها من صباح يوم {{hearingDay}} الموافق {{hearingDate}} وذلك لسماع الحكم بالطلبات الواردة بأصل صحيفة الدعوى، ونبهت عليه أنه في حالة عدم حضوره يعتبر الحكم حضوريًا في حقه، مع حفظ كافة الحقوق القانونية الأخرى للطالب.\nالسند القانوني: المادة ٨٤/١ من قانون المرافعات.\nولأجل/\n\n— الموضوع: إعادة إعلان — بناءً على طلب الطالب وتحت مسئوليته — وكيل الطالب: أ/ {{lawyerName}} المحامي",
+ "category": "COURT_PAPERS",
+ "categoryLabel": "صحف الدعاوى والإعلانات",
+ "credits": 1,
+ "active": true,
+ "version": 1,
+ "fixedQuotes": true,
+ "source": "البوابة القانونية للتشريعات المصرية — مركز المعلومات ودعم اتخاذ القرار (elpai.idsc.gov.eg)",
+ "draftingInstructions": "املأ القيم كما أدخلها المستخدم حرفيًا ولا تغيّر النصوص القانونية المقتبسة داخل النموذج. الحقول الفارغة الخاصة بالمحضر تبقى نقاطًا. لا تضف مواد أو أحكامًا غير موجودة في المصادر المسترجعة؛ إن طُلبت صياغة الأسباب فاكتبها من وقائع المستخدم فقط مع الاستشهاد بالمكتبة. أرجع ملاحظات مراجعة مختصرة (مواعيد الإعلان، الاختصاص، المستندات المطلوبة)."
+}

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لوحة تحكم — سند Sand</title>
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+<div id="app"></div><div id="toast"></div>
+<script>
+const API = location.pathname.replace(/\/(admin|office)(\/.*)?$/, '') + '/api/v1';
+let token = sessionStorage.getItem('lg_admin_token'), me = null, tab = 'overview';
+const $ = (h) => { const d = document.createElement('div'); d.innerHTML = h.trim(); return d.firstChild; };
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const toast = (m) => { const t = document.getElementById('toast'); t.textContent = m; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 3000); };
+async function call(method, path, body) {
+  const r = await fetch(API + path, { method, headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) }, body: body ? JSON.stringify(body) : undefined });
+  const j = await r.json().catch(() => ({}));
+  if (r.status === 401) { logout(); throw new Error('انتهت الجلسة'); }
+  if (!r.ok) throw new Error(j.error?.message || 'خطأ');
+  return j;
+}
+const run = (fn) => (...a) => fn(...a).catch((e) => toast(e.message));
+function logout() { token = null; sessionStorage.removeItem('lg_admin_token'); render(); }
+
+function render() {
+  const app = document.getElementById('app');
+  if (!token) {
+    app.innerHTML = `<div class="login"><div class="card"><div class="mark">س</div><h2 style="margin:0 0 4px">لوحة تحكم سند</h2><p class="mute">الدخول بحساب المشرف.</p>
+      <input id="id" placeholder="البريد الإلكتروني" autocomplete="username"><input id="pw" type="password" placeholder="كلمة المرور" autocomplete="current-password">
+      <button class="btn gold" id="go" style="width:100%">دخول</button></div></div>`;
+    document.getElementById('pw').onkeydown = (e) => { if (e.key === 'Enter') document.getElementById('go').click(); };
+    document.getElementById('go').onclick = run(async () => {
+      const r = await call('POST', '/auth/login', { identifier: document.getElementById('id').value, password: document.getElementById('pw').value, deviceId: 'admin-console' });
+      token = r.accessToken; sessionStorage.setItem('lg_admin_token', token); me = null; render();
+    });
+    return;
+  }
+  const tabs = { overview: ['◈', 'الرئيسية'], users: ['👤', 'المستخدمون'], orders: ['💳', 'الطلبات والمدفوعات'], tickets: ['✉', 'الدعم الفني'], library: ['⚖', 'المكتبة القانونية'],
+    uploads: ['⇪', 'رفع القوانين والنماذج'], templates: ['▤', 'النماذج والعقود'], catalog: ['★', 'الباقات والأكواد'], config: ['⚙', 'الإعدادات والذكاء الاصطناعي'],
+    updates: ['📣', 'المستجدات والإشعارات'], admins: ['🛡', 'المشرفون والسجل'], system: ['🗄', 'النظام والنسخ الاحتياطي'] };
+  app.innerHTML = `<div class="shell"><aside><div class="logo"><div class="mark">س</div><div><b>سند</b><small>لوحة التحكم</small></div></div>
+    ${Object.entries(tabs).map(([k, v]) => `<button data-t="${k}" class="${k === tab ? 'on' : ''}"><span class="ico">${v[0]}</span>${v[1]}</button>`).join('')}</aside>
+    <div><div class="top"><h2>${tabs[tab][1]}</h2><span class="sp"></span><span class="chip" id="who"></span><button class="btn sm ghost" id="out">خروج</button></div><main id="main"></main></div></div>`;
+  document.getElementById('out').onclick = logout;
+  app.querySelectorAll('aside button').forEach((b) => b.onclick = () => { tab = b.dataset.t; render(); });
+  run(async () => {
+    if (!me) me = await call('GET', '/admin/me');
+    document.getElementById('who').textContent = `${me.user?.name || ''} — ${me.role}`;
+    await VIEWS[tab](document.getElementById('main'));
+  })();
+}
+
+const table = (cols, rows) => `<div class="tbl"><table><tr>${cols.map((c) => `<th>${c[1]}</th>`).join('')}</tr>${rows.map((r) => `<tr>${cols.map((c) => `<td>${c[2] ? c[2](r) : esc(r[c[0]])}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${cols.length}" class="mute">لا توجد بيانات</td></tr>`}</table></div>`;
+function jsonEditor(el, title, value, onSave, note = '') {
+  el.innerHTML = `<div class="card"><div class="row"><b>${title}</b><span class="sp"></span><button class="btn" id="sv">حفظ</button></div>${note ? `<p class="mute">${note}</p>` : ''}<textarea id="tx">${esc(JSON.stringify(value ?? {}, null, 2))}</textarea></div>`;
+  el.querySelector('#sv').onclick = run(async () => { let v; try { v = JSON.parse(el.querySelector('#tx').value); } catch { return toast('JSON غير صالح'); } await onSave(v); toast('تم الحفظ'); });
+}
+
+async function upload(path, form) {
+  const r = await fetch(API + path, { method: 'POST', headers: { Authorization: 'Bearer ' + token }, body: form });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error?.message || 'خطأ');
+  return j;
+}
+const CATS = [['civil', 'القانون المدني'], ['criminal', 'الجنائي'], ['procedure', 'المرافعات والإثبات والتحكيم'], ['personal-status', 'الأحوال الشخصية'], ['commercial', 'التجاري والشركات'],
+  ['labor', 'العمل والتأمينات'], ['investment', 'الاستثمار'], ['finance', 'التمويل والتأجير'], ['tax', 'الضرائب والرسوم'], ['public-finance', 'المالية العامة'],
+  ['constitutional', 'الدستور والتشريعات الأساسية'], ['administrative', 'الإداري والوظيفة العامة'], ['professions', 'النقابات والمهن']];
+const VIEWS = {
+  async system(el) {
+    const [s, e] = await Promise.all([call('GET', '/admin/system'), call('GET', '/admin/library/embed')]);
+    const mb = (b) => (b / 1048576).toFixed(1) + ' MB';
+    const lb = s.store.lastBackup;
+    el.innerHTML = `<div class="grid"><div class="card kpi"><b>Supabase</b><span>قاعدة البيانات (Postgres)</span></div><div class="card kpi"><b>${lb ? esc(String(lb.at).slice(0, 10)) : '—'}</b><span>آخر نسخة احتياطية</span></div>
+      <div class="card kpi"><b>${s.library.articles}</b><span>مادة في الفهرس</span></div><div class="card kpi"><b>${s.library.vectors}</b><span>متجهات البحث الدلالي</span></div></div>
+      <div class="card"><h3>التخزين على Supabase</h3><p class="mute">البيانات: <b>${esc(s.store.databaseURL)}</b><br>الملفات: <b>${esc(s.store.bucket)}</b><br>النسخة الاحتياطية تُحفظ في Storage (مجلد backups) ويظهر رابط تحميلها. ويمكنك أيضًا النسخ من Supabase → Database → Backups.</p>
+        <div class="row"><button class="btn" id="bk">نسخة احتياطية كاملة الآن</button><button class="btn ghost" id="sy">إعادة تحميل المكتبة</button></div></div>
+      <div class="card"><h3>البحث الدلالي</h3><p class="mute">${e.running ? 'جارٍ البناء…' : 'متوقف'} — ${e.done || 0} / ${e.total || '؟'} ${e.error ? '— خطأ: ' + esc(e.error) : ''}</p><button class="btn gold" id="em">بناء المتجهات الناقصة</button>
+        <p class="mute">الزر يعمل حتى ~6 دقائق في كل ضغطة ثم يكمل من حيث توقف. الأسرع: <code>npm run embed</code> من جهازك.</p></div>
+      <div class="card"><h3>معلومات التشغيل</h3><pre>${esc(JSON.stringify({ node: s.node, inlinePdf: s.store.inlinePdf, uptimeMin: Math.round(s.uptimeSec / 60), providers: s.providers }, null, 2))}</pre></div>`;
+    el.querySelector('#bk').onclick = run(async () => { const r = await call('POST', '/admin/system/backup'); toast('تم الحفظ — جارٍ التحميل'); if (r.url) window.open(r.url, '_blank'); VIEWS.system(el); });
+    el.querySelector('#sy').onclick = run(async () => { const r = await call('POST', '/admin/library/reload'); toast(`تم تحميل المكتبة: ${r.stats.articles} مادة`); VIEWS.system(el); });
+    el.querySelector('#em').onclick = run(async () => { const r = await call('POST', '/admin/library/embed'); toast(r.started ? (r.error ? 'خطأ: ' + r.error : r.finished ? `اكتمل البناء (${r.done})` : `تم ${r.done} — باقي ${r.remaining}، اضغط مرة أخرى`) : r.reason); VIEWS.system(el); });
+  },
+  async uploads(el) {
+    const q = await call('GET', '/admin/uploads/queue');
+    el.innerHTML = `<div class="card"><h3>رفع قانون</h3><p class="mute">Word أو TXT أو JSON (مخرجات أداة المعالجة) يُنشر فورًا بعد تقسيم المواد. PDF يُحفظ في قائمة الانتظار ويُعالج من جهازك بأمر <code>npm run process-queue</code> (فك الخطوط/OCR وتقسيم المواد) ثم يُنشر تلقائيًا.</p>
+      <div class="form"><label>العنوان<input id="lt" placeholder="قانون ..."></label><label>الرقم<input id="ln" type="number"></label><label>السنة<input id="ly" type="number"></label>
+      <label>التصنيف<select id="lc">${CATS.map(([v, l]) => `<option value="${v}">${l}</option>`).join('')}</select></label>
+      <label>الحالة<select id="ls"><option value="">غير محددة</option><option value="IN_FORCE">سارٍ</option><option value="AMENDED">معدّل</option><option value="REPEALED">ملغى</option></select></label>
+      <label>ملاحظة الحالة<input id="lsn"></label><label>موثّق؟<select id="lv"><option value="false">لا</option><option value="true">نعم</option></select></label></div>
+      <div class="drop">اختر الملف<br><input type="file" id="lf" accept=".pdf,.docx,.txt,.json"></div><div class="row" style="margin-top:12px"><button class="btn gold" id="lu">رفع ونشر</button><span class="mute" id="lr"></span></div></div>
+      <div class="card"><h3>رفع نموذج / عقد (Word)</h3><p class="mute">كل فراغ منقّط في الملف يتحول لخانة للملء تلقائيًا، ويمكن تعديل الخانات بعدها من «النماذج والعقود».</p>
+      <div class="form"><label>كود التصنيف<input id="tc" value="CIVIL_OTHER"></label><label>اسم التصنيف<input id="tcl" value="عقود مدنية أخرى"></label></div>
+      <div class="drop">ملف ‎.docx أو ‎.json<br><input type="file" id="tf" accept=".docx,.json" multiple></div><div class="row" style="margin-top:12px"><button class="btn gold" id="tu">رفع</button><span class="mute" id="tr"></span></div></div>
+      <div class="card"><h3>قائمة معالجة ملفات PDF</h3>${table([['id', 'المعرّف'], ['meta', 'العنوان', (x) => esc(x.meta?.title)], ['status', 'الحالة', (x) => `<span class="pill ${x.status === 'DONE' ? 'ok' : x.status === 'FAILED' ? 'bad' : 'warn'}">${x.status}</span>`],
+        ['articles', 'مواد'], ['method', 'الطريقة'], ['createdAt', 'الرفع', (x) => esc(String(x.createdAt).slice(0, 16))],
+        ['id', '', (x) => x.status === 'NEEDS_REVIEW' ? `<button class="btn sm" data-pub="${x.id}">نشر رغم الملاحظات</button>` : (x.error ? `<span class="mute">${esc(x.error.slice(0, 80))}</span>` : '')]], q.items)}</div>`;
+    el.querySelectorAll('[data-pub]').forEach((b) => b.onclick = run(async () => { await call('POST', `/admin/uploads/queue/${b.dataset.pub}/publish`); toast('تم النشر'); VIEWS.uploads(el); }));
+    el.querySelector('#lu').onclick = run(async () => {
+      const f = el.querySelector('#lf').files[0]; if (!f) return toast('اختر ملفًا');
+      const fd = new FormData(); fd.append('file', f);
+      for (const [k, id] of [['title', 'lt'], ['number', 'ln'], ['year', 'ly'], ['categoryId', 'lc'], ['status', 'ls'], ['statusNote', 'lsn'], ['verified', 'lv']]) fd.append(k, el.querySelector('#' + id).value);
+      el.querySelector('#lr').textContent = 'جارٍ الرفع…';
+      const r = await upload('/admin/uploads/law', fd);
+      el.querySelector('#lr').textContent = r.status === 'QUEUED' ? r.message : `تم: ${r.id} — ${r.articles} مادة`;
+      toast('تم');
+    });
+    el.querySelector('#tu').onclick = run(async () => {
+      const files = [...el.querySelector('#tf').files]; if (!files.length) return toast('اختر ملفًا');
+      let done = 0;
+      for (const f of files) { const fd = new FormData(); fd.append('file', f); fd.append('category', el.querySelector('#tc').value); fd.append('categoryLabel', el.querySelector('#tcl').value);
+        await upload('/admin/uploads/template', fd); el.querySelector('#tr').textContent = `تم ${++done} من ${files.length}`; }
+      toast('تم رفع النماذج');
+    });
+  },
+  async overview(el) {
+    const [o, ai] = await Promise.all([call('GET', '/admin/overview'), call('GET', '/admin/ai/providers').catch(() => ({}))]);
+    const k = [['المستخدمون', o.users], ['جدد آخر 7 أيام', o.newUsers7d], ['موقوفون', o.suspended], ['طلبات مدفوعة', o.ordersPaid], ['تحويلات بانتظار المراجعة', o.ordersPendingReview],
+      ['إيراد الشهر (ج.م)', o.revenueThisMonth], ['تذاكر مفتوحة', o.openTickets], ['مصادر المكتبة', o.library.items], ['مواد قانونية', o.library.articles], ['متجهات البحث', o.library.vectors]];
+    el.innerHTML = `<div class="grid">${k.map(([a, b]) => `<div class="card kpi"><b>${b ?? 0}</b><span>${a}</span></div>`).join('')}</div>
+      <div class="card"><h3>محركات الذكاء الاصطناعي</h3><div class="row"><span class="pill ok">الأساسي: ${esc(ai.primary || '—')}</span>
+        <span class="pill ${ai.gemini ? 'ok' : 'bad'}">Gemini: ${esc(ai.gemini ? ai.gemini.fast : 'غير مهيأ')}</span><span class="pill ${ai.openai ? 'ok' : 'bad'}">OpenAI: ${esc(ai.openai || 'غير مهيأ')}</span>
+        <span class="pill ${ai.groq ? 'ok' : 'bad'}">Groq: ${esc(ai.groq || 'غير مهيأ')}</span><span class="pill ${ai.openrouter ? 'ok' : 'bad'}">OpenRouter: ${esc(ai.openrouter || 'غير مهيأ')}</span>
+        <span class="pill">الترتيب: ${esc((ai.order || []).join(' ← '))}</span>
+        <span class="pill">التضمين: ${esc(ai.embedding || '—')}</span></div><p class="mute">الإجابة تبحث في المكتبة أولًا، وإن لم تجد نصوصًا كافية تستعين ببحث الإنترنت وتُعلَّم كـ«غير موثّقة».</p>
+        <button class="btn gold" id="aitest">اختبار المزودين الآن</button><div id="aires" style="margin-top:12px"></div></div>
+      <div class="card"><h3>استخدام الذكاء الاصطناعي (آخر 14 يومًا)</h3>${table([['day', 'اليوم'], ['total', 'العمليات'], ['ops', 'التفاصيل', (r) => esc(Object.entries(r.ops).map(([a, b]) => `${a}: ${b}`).join(' · '))]], o.aiUsage)}</div>`;
+    el.querySelector('#aitest').onclick = run(async () => {
+      const box = el.querySelector('#aires'); box.innerHTML = '<span class="mute">جارٍ الاختبار… (حتى دقيقة)</span>';
+      const r = await call('POST', '/admin/ai/test');
+      const label = { chat: 'محادثة', web: 'بحث الإنترنت', embedding: 'البحث الدلالي' };
+      box.innerHTML = table([['provider', 'المزود'], ['model', 'الموديل'], ['check', 'الاختبار', (x) => label[x.check] || x.check],
+        ['ok', 'النتيجة', (x) => `<span class="pill ${x.ok ? 'ok' : 'bad'}">${x.ok ? 'يعمل' : 'لا يعمل'}</span>`], ['ms', 'الزمن (ms)'],
+        ['reply', 'الرد / الخطأ', (x) => esc(x.ok ? (x.reply || '') + (x.sources !== undefined ? ` — مصادر: ${x.sources}` : '') : x.error)]], r.results);
+    });
+  },
+  async users(el, q = '') {
+    const r = await call('GET', '/admin/users?q=' + encodeURIComponent(q));
+    el.innerHTML = `<div class="card"><div class="row"><input id="q" placeholder="بحث بالاسم أو البريد أو الموبايل" value="${esc(q)}"><button class="btn" id="s">بحث</button><span class="mute">${r.total} مستخدم</span></div>
+      ${table([['name', 'الاسم'], ['email', 'البريد'], ['phone', 'الموبايل'], ['remainingCredits', 'الرصيد'], ['status', 'الحالة', (u) => `<span class="pill ${u.status === 'ACTIVE' ? 'ok' : 'bad'}">${u.status}</span>`],
+        ['createdAt', 'التسجيل', (u) => esc(String(u.createdAt).slice(0, 10))], ['id', '', (u) => `<button class="btn sm" data-u="${u.id}">فتح</button>`]], r.items)}</div><div id="ud"></div>`;
+    el.querySelector('#s').onclick = () => VIEWS.users(el, el.querySelector('#q').value);
+    el.querySelectorAll('[data-u]').forEach((b) => b.onclick = run(() => userDetail(el.querySelector('#ud'), b.dataset.u)));
+  },
+  async orders(el, status = 'UNDER_REVIEW') {
+    const r = await call('GET', '/admin/orders?status=' + status);
+    el.innerHTML = `<div class="card"><div class="row"><select id="st">${['UNDER_REVIEW', 'PENDING', 'PAID', 'FAILED', 'EXPIRED', ''].map((s) => `<option ${s === status ? 'selected' : ''} value="${s}">${s || 'الكل'}</option>`).join('')}</select></div>
+      ${table([['itemName', 'العنصر'], ['total', 'الإجمالي'], ['paymentMethod', 'الطريقة'], ['status', 'الحالة'], ['bankProofNote', 'إثبات التحويل'], ['createdAt', 'التاريخ', (o) => esc(String(o.createdAt).slice(0, 16))],
+        ['id', '', (o) => o.provider === 'BANK' && o.status !== 'PAID' ? `<button class="btn sm" data-a="${o.id}">اعتماد</button> <button class="btn sm bad" data-r="${o.id}">رفض</button>` : '']], r.items)}</div>`;
+    el.querySelector('#st').onchange = (e) => VIEWS.orders(el, e.target.value);
+    el.querySelectorAll('[data-a]').forEach((b) => b.onclick = run(async () => { if (!confirm('اعتماد التحويل وتفعيل الطلب؟')) return; await call('POST', `/admin/orders/${b.dataset.a}/approve`); toast('تم الاعتماد'); VIEWS.orders(el, status); }));
+    el.querySelectorAll('[data-r]').forEach((b) => b.onclick = run(async () => { const reason = prompt('سبب الرفض'); if (!reason) return; await call('POST', `/admin/orders/${b.dataset.r}/reject`, { reason }); VIEWS.orders(el, status); }));
+  },
+  async tickets(el, status = 'OPEN') {
+    const r = await call('GET', '/admin/tickets?status=' + status);
+    el.innerHTML = `<div class="card"><div class="row"><select id="st">${['OPEN', 'ANSWERED', 'CLOSED', ''].map((s) => `<option ${s === status ? 'selected' : ''} value="${s}">${s || 'الكل'}</option>`).join('')}</select></div>
+      ${table([['subject', 'الموضوع'], ['category', 'التصنيف'], ['status', 'الحالة'], ['updatedAt', 'آخر تحديث', (t) => esc(String(t.updatedAt).slice(0, 16))], ['id', '', (t) => `<button class="btn sm" data-t="${t.id}">فتح</button>`]], r.items)}</div><div id="td"></div>`;
+    el.querySelector('#st').onchange = (e) => VIEWS.tickets(el, e.target.value);
+    el.querySelectorAll('[data-t]').forEach((b) => b.onclick = run(async () => {
+      const t = await call('GET', '/admin/tickets/' + b.dataset.t), d = el.querySelector('#td');
+      d.innerHTML = `<div class="card"><b>${esc(t.subject)}</b> <span class="mute">— ${esc(t.user?.name)} (${esc(t.user?.email)})</span>
+        ${t.messages.map((m) => `<div class="msg ${m.fromSupport ? 's' : ''}"><span class="mute">${esc(m.authorName)} · ${esc(String(m.createdAt).slice(0, 16))}</span><div>${esc(m.body)}</div></div>`).join('')}
+        <textarea id="rb" style="min-height:120px;direction:rtl;font-family:inherit"></textarea><div class="row"><button class="btn" id="rp">رد</button><button class="btn gold" id="rc">رد وإغلاق</button></div></div>`;
+      const send = (close) => run(async () => { await call('POST', `/admin/tickets/${t.id}/reply`, { body: d.querySelector('#rb').value, close }); toast('تم الإرسال'); VIEWS.tickets(el, status); });
+      d.querySelector('#rp').onclick = send(false); d.querySelector('#rc').onclick = send(true);
+    }));
+  },
+  async library(el) {
+    const r = await call('GET', '/admin/library/items');
+    el.innerHTML = `<div class="card"><div class="row"><b>المصادر المنشورة (${r.items.length})</b><span class="sp"></span><button class="btn sm" id="rl">إعادة تحميل الفهرس</button></div>
+      <p class="mute">الحالة لا تُعرض للمستخدم إلا بعد تأكيدها هنا. "غير موثّق" = نص آلي يحتاج مراجعة.</p>
+      ${table([['title', 'المصدر'], ['number', 'رقم/سنة', (i) => i.number && i.year ? `${i.number}/${i.year}` : ''], ['categoryId', 'التصنيف'], ['articleCount', 'مواد'],
+        ['textQuality', 'الجودة'], ['status', 'الحالة', (i) => `<select data-s="${i.id}">${[['', '—'], ['IN_FORCE', 'سارٍ'], ['AMENDED', 'معدّل'], ['REPEALED', 'ملغى']].map(([v, l]) => `<option value="${v}" ${(i.status || '') === v ? 'selected' : ''}>${l}</option>`).join('')}</select>`],
+        ['verified', 'موثّق', (i) => `<input type="checkbox" data-v="${i.id}" ${i.verified ? 'checked' : ''}>`], ['id', '', (i) => `<button class="btn sm bad" data-d="${i.id}">إلغاء النشر</button>`]], r.items)}</div>`;
+    el.querySelector('#rl').onclick = run(async () => { const x = await call('POST', '/admin/library/reload'); toast(`تم: ${x.stats.articles} مادة`); });
+    el.querySelectorAll('[data-s]').forEach((s) => s.onchange = run(async () => { const note = s.value ? prompt('ملاحظة الحالة (مثال: ألغي بالقانون ... لسنة ...)') || null : null;
+      await call('PATCH', '/admin/library/items/' + s.dataset.s, { status: s.value || null, statusNote: note }); toast('تم'); }));
+    el.querySelectorAll('[data-v]').forEach((c) => c.onchange = run(async () => { await call('PATCH', '/admin/library/items/' + c.dataset.v, { verified: c.checked }); toast('تم'); }));
+    el.querySelectorAll('[data-d]').forEach((b) => b.onclick = run(async () => { if (!confirm('إلغاء نشر المصدر وكل مواده؟ (يُعاد بالاستيراد)')) return; await call('DELETE', '/admin/library/items/' + b.dataset.d); VIEWS.library(el); }));
+  },
+  async templates(el) {
+    const r = await call('GET', '/admin/templates');
+    el.innerHTML = `<div class="card"><div class="row"><b>النماذج (${r.items.length})</b><span class="sp"></span><button class="btn sm" id="nw">نموذج جديد</button></div>
+      ${table([['name', 'الاسم'], ['categoryLabel', 'التصنيف'], ['fields', 'خانات'], ['credits', 'رصيد'], ['autoFields', 'تحويل آلي', (t) => t.autoFields ? '<span class="pill">يراجع</span>' : ''],
+        ['active', 'مفعّل', (t) => `<input type="checkbox" data-a="${t.id}" ${t.active ? 'checked' : ''}>`], ['id', '', (t) => `<button class="btn sm" data-e="${t.id}">تحرير</button>`]], r.items)}</div><div id="ed"></div>`;
+    const edit = (id, t) => jsonEditor(el.querySelector('#ed'), `تحرير ${id}`, t, (v) => call('PUT', '/admin/templates/' + id, v),
+      'الحقول: key, label, type (text|textarea|date|number|money|select|multiselect|national_id|phone|email), required, options, defaultValue, group. النص يستخدم {{key}}.');
+    el.querySelectorAll('[data-e]').forEach((b) => b.onclick = run(async () => edit(b.dataset.e, await call('GET', '/admin/templates/' + b.dataset.e))));
+    el.querySelectorAll('[data-a]').forEach((c) => c.onchange = run(async () => { await call('PATCH', `/admin/templates/${c.dataset.a}/active`, { active: c.checked }); toast('تم'); }));
+    el.querySelector('#nw').onclick = () => { const id = prompt('معرّف النموذج (أحرف إنجليزية وشرطات)'); if (id) edit(id, { name: '', category: 'CIVIL_OTHER', categoryLabel: 'عقود مدنية أخرى', description: '', credits: 1, active: true, fields: [], body: '' }); };
+  },
+  async catalog(el, kind = 'plans') {
+    const r = await call('GET', '/admin/catalog/' + kind);
+    const samples = { plans: { name: 'الباقة الشهرية', description: '', price: 299, currency: 'EGP', durationDays: 30, credits: 100, freeServiceUses: 0, features: [], limits: { cases: 200, documents: 1000, teamMembers: 3, storageMb: 2048, aiDailyRequests: 100 }, sort: 1, active: true },
+      creditPacks: { name: '50 رصيد', credits: 50, bonusCredits: 5, price: 150, currency: 'EGP', sort: 1, active: true },
+      promoCodes: { discountType: 'PERCENT', discountValue: 20, bonusCredits: 0, maxUses: 100, expiresAt: '2026-12-31T23:59:59Z', active: true } };
+    el.innerHTML = `<div class="card"><div class="row"><select id="k">${[['plans', 'الباقات'], ['creditPacks', 'حزم الرصيد'], ['promoCodes', 'أكواد الخصم']].map(([v, l]) => `<option value="${v}" ${v === kind ? 'selected' : ''}>${l}</option>`).join('')}</select>
+      <span class="sp"></span><button class="btn sm" id="nw">إضافة</button></div>${table([['id', 'المعرّف'], ['name', 'الاسم'], ['price', 'السعر'], ['credits', 'رصيد'], ['active', 'مفعّل', (x) => x.active === false ? 'لا' : 'نعم'],
+        ['id', '', (x) => `<button class="btn sm" data-e="${x.id}">تحرير</button>`]], r.items)}</div><div id="ed"></div>`;
+    el.querySelector('#k').onchange = (e) => VIEWS.catalog(el, e.target.value);
+    const edit = (id, v) => jsonEditor(el.querySelector('#ed'), `${kind} / ${id}`, v, (x) => call('PUT', `/admin/catalog/${kind}/${id}`, x));
+    el.querySelectorAll('[data-e]').forEach((b) => b.onclick = () => { const { id, ...v } = r.items.find((x) => x.id === b.dataset.e); edit(id, v); });
+    el.querySelector('#nw').onclick = () => { const id = prompt('المعرّف'); if (id) edit(id, samples[kind]); };
+  },
+  async config(el, name = 'app') {
+    const r = await call('GET', '/admin/config/' + name);
+    const notes = { app: 'المزايا (features) تتحكم في إظهار الخدمات في التطبيق. الرصيد المجاني للمستخدم الجديد: freeCredits / freeServiceUses.',
+      ai: 'models: { primary: auto|gemini|openai|groq|openrouter, gemini, geminiPro, openai, groq, openrouter, embedding, embeddingDimensions } — operations: { CODE: { label, credits, usesFreeUse, active } }. اترك الحقل فارغًا لاستخدام القيمة من ملف .env.',
+      payments: 'bank: { bankName, accountName, accountNumber, iban, swift, branch, instructions } لتفعيل التحويل البنكي — disabled: { FAWRY_REF: true } لإخفاء طريقة.',
+      caseMeta: 'أنواع القضايا والحالات وأنواع التحليل (اختياري — يوجد افتراضي).', deadlineRules: 'EVENT: { label, title, days, rule, legalSource } — المصدر يجب أن يكون موجودًا بالمكتبة.' };
+    const sel = `<div class="row"><select id="n">${Object.keys(notes).map((k) => `<option ${k === name ? 'selected' : ''}>${k}</option>`).join('')}</select></div>`;
+    el.innerHTML = `<div class="card">${sel}</div><div id="ed"></div>${r.effective ? `<div class="card"><b>القيم الفعلية الحالية</b><pre style="direction:ltr;white-space:pre-wrap">${esc(JSON.stringify(r.effective, null, 2))}</pre></div>` : ''}`;
+    el.querySelector('#n').onchange = (e) => VIEWS.config(el, e.target.value);
+    jsonEditor(el.querySelector('#ed'), `config/${name}`, r.stored || {}, (v) => call('PUT', '/admin/config/' + name, v), notes[name]);
+  },
+  async updates(el) {
+    const r = await call('GET', '/admin/legal-updates');
+    el.innerHTML = `<div class="card"><b>إضافة مستجد قانوني</b><div class="row"><input id="t" placeholder="العنوان" style="flex:1"><input id="ri" placeholder="معرّف المصدر (اختياري) مثل law-152-2026"></div>
+      <textarea id="s" style="min-height:90px;direction:rtl;font-family:inherit" placeholder="الملخص"></textarea><div class="row"><button class="btn" id="add">نشر</button><label><input type="checkbox" id="nt"> إشعار كل المستخدمين</label></div></div>
+      <div class="card">${table([['title', 'العنوان'], ['publishedAt', 'التاريخ', (u) => esc(String(u.publishedAt).slice(0, 10))], ['id', '', (u) => `<button class="btn sm bad" data-d="${u.id}">حذف</button>`]], r.items)}</div>`;
+    el.querySelector('#add').onclick = run(async () => {
+      const b = { title: el.querySelector('#t').value, summary: el.querySelector('#s').value, refType: el.querySelector('#ri').value ? 'LAW' : null, refId: el.querySelector('#ri').value || null };
+      await call('POST', '/admin/legal-updates', b);
+      if (el.querySelector('#nt').checked) await call('POST', '/admin/notifications/broadcast', { title: b.title, body: b.summary.slice(0, 200), type: 'LEGAL_UPDATE', refType: b.refType, refId: b.refId });
+      toast('تم النشر'); VIEWS.updates(el);
+    });
+    el.querySelectorAll('[data-d]').forEach((b) => b.onclick = run(async () => { await call('DELETE', '/admin/legal-updates/' + b.dataset.d); VIEWS.updates(el); }));
+  },
+  async admins(el) {
+    const [a, log] = await Promise.all([call('GET', '/admin/admins'), call('GET', '/admin/audit')]);
+    el.innerHTML = `<div class="card"><b>المشرفون</b>${table([['uid', 'المعرّف'], ['user', 'الاسم', (x) => esc(x.user?.name)], ['role', 'الدور']], a.items)}
+      <div class="row"><input id="u" placeholder="معرّف المستخدم (uid)"><select id="r"><option>SUPER</option><option>CONTENT</option><option>SUPPORT</option><option>FINANCE</option><option value="">إزالة</option></select><button class="btn" id="g">حفظ</button></div></div>
+      <div class="card"><b>سجل العمليات</b>${table([['at', 'الوقت', (x) => esc(String(x.at).slice(0, 16))], ['role', 'الدور'], ['action', 'العملية'], ['target', 'الهدف']], log.items)}</div>`;
+    el.querySelector('#g').onclick = run(async () => { await call('PUT', '/admin/admins/' + el.querySelector('#u').value.trim(), { role: el.querySelector('#r').value || null }); toast('تم'); VIEWS.admins(el); });
+  },
+};
+async function userDetail(d, id) {
+  const u = await call('GET', '/admin/users/' + id);
+  d.innerHTML = `<div class="card"><div class="row"><b>${esc(u.user.name)}</b><span class="mute">${esc(u.user.email)} · ${esc(u.user.phone)} · ${esc(u.user.officeName)}</span></div>
+    <p>الرصيد: <b>${u.wallet.remainingCredits}</b> (مجاني ${u.wallet.freeCredits} · مشترى ${u.wallet.purchasedCredits} · مكافأة ${u.wallet.bonusCredits} · مستخدم ${u.wallet.usedCredits}) — استخدامات مجانية: ${u.wallet.freeServiceUses}</p>
+    <p>الاشتراك: ${u.subscription ? esc(u.subscription.planName) + ' حتى ' + esc(String(u.subscription.endAt).slice(0, 10)) : 'لا يوجد'}</p>
+    <div class="row"><input id="am" type="number" placeholder="رصيد (+/-)"><input id="rs" placeholder="السبب"><button class="btn" id="cr">تعديل الرصيد</button>
+    <button class="btn ${u.user.status === 'SUSPENDED' ? '' : 'bad'}" id="st">${u.user.status === 'SUSPENDED' ? 'إعادة تفعيل' : 'إيقاف الحساب'}</button></div>
+    <b>آخر الحركات</b>${table([['createdAt', 'الوقت', (x) => esc(String(x.createdAt).slice(0, 16))], ['amount', 'القيمة'], ['type', 'النوع'], ['description', 'الوصف']], u.transactions)}
+    <b>الطلبات</b>${table([['itemName', 'العنصر'], ['total', 'الإجمالي'], ['status', 'الحالة']], u.orders)}</div>`;
+  d.querySelector('#cr').onclick = run(async () => { await call('POST', `/admin/users/${id}/credits`, { amount: Number(d.querySelector('#am').value), reason: d.querySelector('#rs').value }); toast('تم'); userDetail(d, id); });
+  d.querySelector('#st').onclick = run(async () => { await call('POST', `/admin/users/${id}/status`, { status: u.user.status === 'SUSPENDED' ? 'ACTIVE' : 'SUSPENDED' }); toast('تم'); userDetail(d, id); });
+}
+render();
+</script>
+</body>
+</html>

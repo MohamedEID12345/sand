@@ -1,0 +1,28 @@
+{
+  "models": {
+    "fast":      { "provider": "gemini", "id": "PUT-FAST-MODEL-ID",  "temperature": 0.2, "maxOutputTokens": 4096 },
+    "pro":       { "provider": "gemini", "id": "PUT-PRO-MODEL-ID",   "temperature": 0.2, "maxOutputTokens": 8192 },
+    "embedding": { "provider": "gemini", "id": "PUT-EMBEDDING-MODEL-ID", "dimensions": 768 }
+  },
+  "operations": {
+    "QUESTION":          { "label": "سؤال قانوني",     "model": "fast", "credits": 1, "usesFreeService": true,  "dailyLimit": 200, "enabled": true },
+    "RESEARCH":          { "label": "بحث قانوني",      "model": "pro",  "credits": 2, "usesFreeService": true,  "dailyLimit": 100, "enabled": true },
+    "DEEP_RESEARCH":     { "label": "بحث معمّق",       "model": "pro",  "credits": 5, "usesFreeService": false, "dailyLimit": 20,  "enabled": true },
+    "MEMO":              { "label": "صياغة مذكرة",     "model": "pro",  "credits": 3, "usesFreeService": true,  "dailyLimit": 50,  "enabled": true },
+    "DEBATE":            { "label": "مناظرة قانونية",  "model": "pro",  "credits": 2, "usesFreeService": true,  "dailyLimit": 50,  "enabled": true },
+    "DEBATE_ANALYSIS":   { "label": "تحليل المناظرة",  "model": "pro",  "credits": 2, "usesFreeService": false, "dailyLimit": 30,  "enabled": true },
+    "COMPARE":           { "label": "مقارنة",          "model": "fast", "credits": 1, "usesFreeService": true,  "dailyLimit": 100, "enabled": true },
+    "DOCUMENT":          { "label": "تحليل مستند",     "model": "pro",  "credits": 3, "usesFreeService": true,  "dailyLimit": 50,  "enabled": true },
+    "CONTRACT_GENERATE": { "label": "إنشاء عقد",       "model": "pro",  "credits": 0, "usesFreeService": true,  "dailyLimit": 30,  "enabled": true,
+                           "note": "0 = use the template's own credits" },
+    "CASE_WEAKNESSES":   { "label": "نقاط الضعف والثغرات", "model": "pro", "credits": 4, "usesFreeService": false, "dailyLimit": 20, "enabled": true },
+    "CASE_EVIDENCE":     { "label": "مصفوفة الأدلة",   "model": "pro",  "credits": 4, "usesFreeService": false, "dailyLimit": 20, "enabled": true },
+    "CASE_CONTRADICTIONS": { "label": "التناقضات",     "model": "pro",  "credits": 4, "usesFreeService": false, "dailyLimit": 20, "enabled": true },
+    "CASE_TIMELINE":     { "label": "الخط الزمني",     "model": "fast", "credits": 2, "usesFreeService": false, "dailyLimit": 20, "enabled": true }
+  },
+  "safety": {
+    "forbidOutcomePrediction": true,
+    "requireCitations": true,
+    "rejectUnverifiedCitations": true
+  }
+}

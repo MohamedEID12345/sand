@@ -1,0 +1,195 @@
+{
+ "id": "warning-marital-furniture-offer",
+ "name": "إنذار عرض منقولات زوجية",
+ "sort": 60,
+ "description": "عرض الزوج منقولات الزوجية عرضًا قانونيًا على يد محضر لإبراء ذمته في جنحة تبديد، مع طلب الإيداع إن رُفض الاستلام (المادة 488 مرافعات).",
+ "legalBasis": [
+  "قانون المرافعات المدنية والتجارية — المادة 488"
+ ],
+ "fields": [
+  {
+   "key": "serviceDay",
+   "label": "يوم الإعلان",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "serviceDate",
+   "label": "تاريخ الإعلان",
+   "type": "date",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "bailiffName",
+   "label": "اسم المحضر",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "servedWith",
+   "label": "مخاطبًا مع",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............",
+   "group": "بيانات المحضر (تُترك للمحضر)"
+  },
+  {
+   "key": "requesterName",
+   "label": "اسم الطالب",
+   "type": "text",
+   "required": true,
+   "group": "الطالب",
+   "maxLength": 150
+  },
+  {
+   "key": "requesterAddress",
+   "label": "عنوان الطالب",
+   "type": "text",
+   "required": true,
+   "group": "الطالب"
+  },
+  {
+   "key": "lawyerName",
+   "label": "اسم المحامي",
+   "type": "text",
+   "required": true,
+   "group": "المحامي (المحل المختار)"
+  },
+  {
+   "key": "lawyerOfficeAddress",
+   "label": "عنوان مكتب المحامي",
+   "type": "text",
+   "required": true,
+   "group": "المحامي (المحل المختار)"
+  },
+  {
+   "key": "bailiffCourt",
+   "label": "محكمة المحضرين (الجزئية)",
+   "type": "text",
+   "required": true,
+   "group": "المحضرين",
+   "placeholder": "مثال: الزقازيق"
+  },
+  {
+   "key": "respondentName",
+   "label": "اسم الزوجة (المنذر إليها)",
+   "type": "text",
+   "required": true,
+   "group": "المنذر إليها"
+  },
+  {
+   "key": "respondentAddress",
+   "label": "عنوان المنذر إليها",
+   "type": "text",
+   "required": true,
+   "group": "المنذر إليها"
+  },
+  {
+   "key": "respondentDistrict",
+   "label": "القسم / المركز",
+   "type": "text",
+   "required": true,
+   "group": "المنذر إليها"
+  },
+  {
+   "key": "respondentGovernorate",
+   "label": "المحافظة",
+   "type": "text",
+   "required": true,
+   "group": "المنذر إليها"
+  },
+  {
+   "key": "marriageDate",
+   "label": "تاريخ وثيقة الزواج",
+   "type": "date",
+   "required": true,
+   "group": "الزواج والجنحة"
+  },
+  {
+   "key": "misdemeanorNumber",
+   "label": "رقم الجنحة",
+   "type": "text",
+   "required": true,
+   "group": "الزواج والجنحة"
+  },
+  {
+   "key": "misdemeanorYear",
+   "label": "سنة الجنحة",
+   "type": "number",
+   "required": true,
+   "group": "الزواج والجنحة"
+  },
+  {
+   "key": "misdemeanorCourt",
+   "label": "جنح (القسم / المركز)",
+   "type": "text",
+   "required": true,
+   "group": "الزواج والجنحة"
+  },
+  {
+   "key": "misdemeanorHearingDate",
+   "label": "الجلسة المحددة لنظر الجنحة",
+   "type": "date",
+   "required": true,
+   "group": "الزواج والجنحة"
+  },
+  {
+   "key": "adjournDate",
+   "label": "الجلسة المؤجل إليها لإتمام العرض",
+   "type": "date",
+   "required": true,
+   "group": "الزواج والجنحة"
+  },
+  {
+   "key": "furnitureList",
+   "label": "بيان المنقولات المعروضة",
+   "type": "textarea",
+   "required": true,
+   "group": "المنقولات"
+  },
+  {
+   "key": "offerDay",
+   "label": "يوم العرض",
+   "type": "text",
+   "required": true,
+   "group": "ميعاد العرض"
+  },
+  {
+   "key": "offerDate",
+   "label": "تاريخ العرض",
+   "type": "date",
+   "required": true,
+   "group": "ميعاد العرض"
+  },
+  {
+   "key": "offerTime",
+   "label": "الساعة",
+   "type": "text",
+   "required": true,
+   "group": "ميعاد العرض"
+  },
+  {
+   "key": "policeStation",
+   "label": "قسم الشرطة",
+   "type": "text",
+   "required": true,
+   "group": "ميعاد العرض"
+  }
+ ],
+ "body": "إنه في يوم {{serviceDay}} الموافق {{serviceDate}}\nبناءً على طلب السيد/ {{requesterName}} المقيم في {{requesterAddress}}\nومحله المختار مكتب الأستاذ/ {{lawyerName}} المحامي الكائن في {{lawyerOfficeAddress}}\nأنا {{bailiffName}} محضر محكمة {{bailiffCourt}} الجزئية قد انتقلت في التاريخ المذكور أعلاه وأعلنت:\nالسيدة/ {{respondentName}} المقيمة في {{respondentAddress}} قسم {{respondentDistrict}} محافظة {{respondentGovernorate}}\nمخاطبًا مع/ {{servedWith}}\nوأنذرتها بالآتي\nالطالب زوج للمنذر إليها بموجب وثيقة الزواج الشرعي المؤرخة {{marriageDate}}، إلا أن المنذر إليها قد تركت منزل الزوجية وهي لا تزال في عصمة الطالب.\nوقد أقامت المنذر إليها ضد الطالب الجنحة رقم {{misdemeanorNumber}} لسنة {{misdemeanorYear}} جنح {{misdemeanorCourt}} مدعية تبديده منقولات زوجية وقد تحدد لنظرها جلسة {{misdemeanorHearingDate}}، وبتلك الجلسة مثل الطالب وطلب التصريح له بعرض المنقولات عرضًا قانونيًا لإبراء ذمته فقررت المحكمة التأجيل لجلسة {{adjournDate}} لإتمام العرض القانوني.\nوحيث يهم الطالب تنفيذ قرار المحكمة وإبراء ذمته فإنه يعرض منقولات الزوجية على يد محضر وبيانها كالتالي:\n{{furnitureList}}\nوفي حالة رفض الاستلام سيضطر الطالب إلى عرض الأمر على قاضي الأمور المستعجلة للترخيص له بإيداع المنقولات في المكان الذي يحدده على أن تكون مصروفات النقل والتخزين على عاتق المنذر إليها، وذلك وفقًا للمادة ٤٨٨ من قانون المرافعات التي تنص على أنه:\n\"وإذا كان المعروض شيئًا غير النقود جاز للمدين الذي عرضه أن يطلب من قاضي الأمور المستعجلة الترخيص في إيداعه بالمكان الذي يعينه القاضي إذا كان الشيء مما يمكن نقله.\"\n\nبناءً عليه\nأنا المحضر سالف الذكر قد انتقلت إلى حيث محل إقامة المنذر إليها وسلمتها صورة من هذا الإنذار للعلم بما جاء به ونفاذ مفعوله قانونًا، وعرضت عليها المنقولات المبينة بصدر هذا الإنذار عرضًا قانونيًا، وحددت لها ميعاد العرض الساعة {{offerTime}} من يوم {{offerDay}} الموافق {{offerDate}} أمام قسم شرطة {{policeStation}}، مع حفظ كافة الحقوق القانونية الأخرى للطالب.\nولأجل/\nالسند القانوني: المادة ٤٨٨ من قانون المرافعات.\n\n— الموضوع: إنذار عرض منقولات زوجية — بناءً على طلب الطالب وتحت مسئوليته — وكيل الطالب: أ/ {{lawyerName}} المحامي",
+ "notes": "في النموذج الأصلي \"وإذا كان العروض\"؛ صُححت إلى \"المعروض\".",
+ "category": "COURT_PAPERS",
+ "categoryLabel": "صحف الدعاوى والإعلانات",
+ "credits": 1,
+ "active": true,
+ "version": 1,
+ "fixedQuotes": true,
+ "source": "البوابة القانونية للتشريعات المصرية — مركز المعلومات ودعم اتخاذ القرار (elpai.idsc.gov.eg)",
+ "draftingInstructions": "املأ القيم كما أدخلها المستخدم حرفيًا ولا تغيّر النصوص القانونية المقتبسة داخل النموذج. الحقول الفارغة الخاصة بالمحضر تبقى نقاطًا. لا تضف مواد أو أحكامًا غير موجودة في المصادر المسترجعة؛ إن طُلبت صياغة الأسباب فاكتبها من وقائع المستخدم فقط مع الاستشهاد بالمكتبة. أرجع ملاحظات مراجعة مختصرة (مواعيد الإعلان، الاختصاص، المستندات المطلوبة)."
+}

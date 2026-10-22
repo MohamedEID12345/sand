@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/view_appbar" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingTop="@dimen/space_s"
+            android:paddingEnd="@dimen/screen_padding"
+            android:paddingBottom="@dimen/space_2xl">
+
+            <TextView
+                android:id="@+id/meta"
+                style="@style/LG.Text.Muted"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_s" />
+
+            <LinearLayout
+                android:id="@+id/running"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_s"
+                android:background="@drawable/bg_icon_tile"
+                android:backgroundTint="@color/tone_ai_bg"
+                android:orientation="vertical"
+                android:padding="@dimen/space_l"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/analysis_running_message"
+                    android:textAppearance="@style/TextAppearance.LG.Label"
+                    android:textColor="@color/tone_ai" />
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_s"
+                    android:indeterminate="true"
+                    app:indicatorColor="@color/tone_ai" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/failed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_s"
+                android:background="@drawable/bg_icon_tile"
+                android:backgroundTint="@color/tone_danger_bg"
+                android:orientation="vertical"
+                android:padding="@dimen/space_l"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/failed_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.LG.Label"
+                    android:textColor="@color/tone_danger" />
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/summary_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_s">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_l">
+
+                    <TextView
+                        style="@style/LG.Text.SectionTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/analysis_summary" />
+
+                    <TextView
+                        android:id="@+id/summary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.LG.Body"
+                        android:textColor="?attr/colorOnSurface"
+                        android:layout_marginTop="@dimen/space_xs"
+                        android:lineSpacingMultiplier="1.2"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/sections"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/citations_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_s">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_l">
+
+                    <TextView
+                        style="@style/LG.Text.SectionTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chat_sources" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/citations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xs" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/disclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_l"
+                android:background="@drawable/bg_icon_tile"
+                android:backgroundTint="@color/tone_warning_bg"
+                android:drawablePadding="@dimen/space_s"
+                android:padding="@dimen/space_m"
+                android:textAppearance="@style/TextAppearance.LG.BodySmall"
+                android:textColor="@color/tone_warning"
+                app:drawableStartCompat="@drawable/ic_warning"
+                app:drawableTint="@color/tone_warning" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.legalguide.app.ui.common.StateView
+        android:id="@+id/state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    </FrameLayout>
+</LinearLayout>

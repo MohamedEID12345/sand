@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space_2xs">2dp</dimen>
+    <dimen name="space_xs">4dp</dimen>
+    <dimen name="space_s">8dp</dimen>
+    <dimen name="space_m">12dp</dimen>
+    <dimen name="space_l">16dp</dimen>
+    <dimen name="space_xl">20dp</dimen>
+    <dimen name="space_2xl">24dp</dimen>
+    <dimen name="space_3xl">32dp</dimen>
+    <dimen name="screen_padding">20dp</dimen>
+    <dimen name="radius_s">10dp</dimen>
+    <dimen name="radius_m">14dp</dimen>
+    <dimen name="radius_l">20dp</dimen>
+    <dimen name="radius_xl">28dp</dimen>
+    <dimen name="button_height">52dp</dimen>
+    <dimen name="icon_s">18dp</dimen>
+    <dimen name="icon_m">22dp</dimen>
+    <dimen name="icon_l">28dp</dimen>
+    <dimen name="icon_tile">44dp</dimen>
+    <dimen name="avatar_l">64dp</dimen>
+    <dimen name="max_content_width">720dp</dimen>
+    <dimen name="bubble_max_width">320dp</dimen>
+</resources>

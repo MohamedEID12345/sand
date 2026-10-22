@@ -1,0 +1,52 @@
+# يبني ملف APK قابل للتثبيت تلقائيًا على خوادم GitHub (لا يحتاج Android Studio).
+# التشغيل: Actions → "Build Android APK" → Run workflow → حمّل الملف من Artifacts. (العنوان الافتراضي: الـ API على Render)
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      api_url:
+        description: "عنوان الـ API"
+        required: true
+        default: "https://sand-api.onrender.com/api/v1/"
+  push:
+    branches: [main]
+    paths: ["apps/android/**"]
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/android
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "17" }
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Signing key (repository secrets, or a throwaway test key)
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > release.jks
+          else
+            KEYSTORE_PASSWORD=testpass123; KEY_ALIAS=legalguide; KEY_PASSWORD=testpass123
+            keytool -genkeypair -v -keystore release.jks -alias $KEY_ALIAS -keyalg RSA -keysize 2048 -validity 10000 \
+              -storepass $KEYSTORE_PASSWORD -keypass $KEY_PASSWORD -dname "CN=Sand Test, O=Sand, C=EG"
+          fi
+          printf "storeFile=release.jks\nstorePassword=%s\nkeyAlias=%s\nkeyPassword=%s\n" "$KEYSTORE_PASSWORD" "$KEY_ALIAS" "$KEY_PASSWORD" > keystore.properties
+      - name: Build
+        run: |
+          API="${{ github.event.inputs.api_url || secrets.LG_API_BASE_URL || 'https://sand-api.onrender.com/api/v1/' }}"
+          chmod +x gradlew
+          ./gradlew --no-daemon testDebugUnitTest assembleRelease assembleDebug -PLG_API_BASE_URL="$API" -PLG_API_BASE_URL_DEBUG="$API"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: legal-guide-apk
+          path: |
+            apps/android/app/build/outputs/apk/release/*.apk
+            apps/android/app/build/outputs/apk/debug/*.apk

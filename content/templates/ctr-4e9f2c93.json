@@ -1,0 +1,111 @@
+{
+ "id": "ctr-4e9f2c93",
+ "name": "محضر جرد عهدة",
+ "category": "HR",
+ "categoryLabel": "شئون العاملين",
+ "legalBasis": [
+  "قانون العمل رقم 14 لسنة 2025"
+ ],
+ "fields": [
+  {
+   "key": "f1",
+   "label": "اسم الشركة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f2",
+   "label": "جرد مخزن",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f3",
+   "label": "بيان 3",
+   "type": "textarea",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f4",
+   "label": "بيان 4",
+   "type": "textarea",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f5",
+   "label": "بيان 5",
+   "type": "textarea",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f6",
+   "label": "لجنة الجرد المكلفة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f7",
+   "label": "الاسم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f8",
+   "label": "الاسم (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f9",
+   "label": "الاسم (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f10",
+   "label": "التوقيع",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f11",
+   "label": "التوقيع (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f12",
+   "label": "التوقيع (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f13",
+   "label": "يعتمد",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  }
+ ],
+ "body": "اسم الشركة: {{f1}}\nجرد مخزن: {{f2}}\n\nالزيادة أو العجز أو التلف:\n\nم\nالصنف\nالزيادة\nالعجز\nالتلف\nالشخص المسئول\n1\n\n2\n\n3\n\nالمعالجة:\n{{f3}}\n{{f4}}\n\n{{f5}}\nلجنة الجرد المكلفة: {{f6}}\n\nعضو/عضو /رئيس اللجنة/\nالاسم: {{f7}} الاسم: {{f8}} الاسم: {{f9}}\nالتوقيع: {{f10}} التوقيع: {{f11}} التوقيع: {{f12}}\n\nيعتمد / {{f13}}\nالمدير العام",
+ "description": "نموذج محضر جرد عهدة قابل للملء — 13 خانة.",
+ "credits": 1,
+ "active": true,
+ "sort": 131,
+ "version": 1,
+ "autoFields": true,
+ "source": "نماذج المستخدم (Word) — حُوّلت آليًا: كل فراغ منقّط أصبح خانة",
+ "draftingInstructions": "املأ الخانات بقيم المستخدم حرفيًا وأبقِ البنود كما هي. الخانات الفارغة تبقى نقاطًا. راجع اتساق الأسماء والمبالغ والتواريخ، ونبّه لأي بند يخالف نصًا آمرًا في المصادر المسترجعة دون اختلاق أرقام مواد."
+}

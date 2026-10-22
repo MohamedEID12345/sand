@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/view_appbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingTop="@dimen/space_s"
+            android:paddingEnd="@dimen/screen_padding"
+            android:paddingBottom="@dimen/space_2xl">
+
+            <TextView
+                style="@style/LG.Text.SectionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/case_section_main"
+                android:layout_marginTop="@dimen/space_xs"
+                android:layout_marginBottom="@dimen/space_s" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/case_type_layout"
+                style="@style/Widget.LG.TextInput.Dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_m"
+                android:hint="@string/case_type">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/case_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/case_number_layout"
+                    style="@style/Widget.LG.TextInput"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.6"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_s"
+                    android:layout_marginBottom="@dimen/space_m"
+                    android:hint="@string/case_number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/case_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textAlignment="viewStart" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/year_layout"
+                    style="@style/Widget.LG.TextInput"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.4"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_m"
+                    android:hint="@string/case_year">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/year"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textAlignment="viewStart" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/court_layout"
+                style="@style/Widget.LG.TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_m"
+                android:hint="@string/case_court">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/court"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/circuit_layout"
+                style="@style/Widget.LG.TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_m"
+                android:hint="@string/case_circuit">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/circuit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/LG.Text.SectionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/case_section_parties"
+                android:layout_marginTop="@dimen/space_l"
+                android:layout_marginBottom="@dimen/space_s" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/client_layout"
+                style="@style/Widget.LG.TextInput.Dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_m"
+                android:hint="@string/case_client">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/client"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_client"
+                style="@style/Widget.LG.Button.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/client_new"
+                app:icon="@drawable/ic_add"
+                android:layout_marginTop="-8dp"
+                android:layout_marginBottom="@dimen/space_s" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/opponent_layout"
+                style="@style/Widget.LG.TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_m"
+                android:hint="@string/case_opponent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/opponent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/LG.Text.SectionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/case_section_status"
+                android:layout_marginTop="@dimen/space_l"
+                android:layout_marginBottom="@dimen/space_s" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/status_layout"
+                style="@style/Widget.LG.TextInput.Dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_m"
+                android:hint="@string/case_status">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/priority_layout"
+                style="@style/Widget.LG.TextInput.Dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_m"
+                android:hint="@string/case_priority">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/priority"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/description_layout"
+                style="@style/Widget.LG.TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_m"
+                android:hint="@string/case_description">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:textAlignment="viewStart"
+                                android:gravity="top|start"
+                                android:minLines="3" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/custom_title"
+                style="@style/LG.Text.SectionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/case_custom_fields"
+                android:layout_marginTop="@dimen/space_l"
+                android:layout_marginBottom="@dimen/space_s"
+                android:visibility="gone" />
+
+            <com.legalguide.app.ui.common.DynamicFormView
+                android:id="@+id/custom_fields"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/screen_padding"
+        android:paddingTop="@dimen/space_m"
+        android:paddingEnd="@dimen/screen_padding"
+        android:paddingBottom="@dimen/space_m">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/save"
+            style="@style/Widget.LG.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/action_save"
+            app:icon="@drawable/ic_check_circle" />
+    </LinearLayout>
+</LinearLayout>

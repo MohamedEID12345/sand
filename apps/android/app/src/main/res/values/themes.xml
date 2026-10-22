@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.LegalGuide" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/lg_primary</item>
+        <item name="colorOnPrimary">@color/lg_on_primary</item>
+        <item name="colorPrimaryContainer">@color/lg_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/lg_on_primary_container</item>
+        <item name="colorSecondary">@color/lg_secondary</item>
+        <item name="colorOnSecondary">@color/lg_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/lg_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/lg_on_secondary_container</item>
+        <item name="colorTertiary">@color/lg_tertiary</item>
+        <item name="colorOnTertiary">@color/lg_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/lg_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/lg_on_tertiary_container</item>
+        <item name="android:colorBackground">@color/lg_background</item>
+        <item name="colorOnBackground">@color/lg_on_background</item>
+        <item name="colorSurface">@color/lg_surface</item>
+        <item name="colorOnSurface">@color/lg_on_surface</item>
+        <item name="colorSurfaceVariant">@color/lg_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/lg_on_surface_variant</item>
+        <item name="colorSurfaceContainerLowest">@color/lg_surface_container_lowest</item>
+        <item name="colorSurfaceContainerLow">@color/lg_surface_container_low</item>
+        <item name="colorSurfaceContainer">@color/lg_surface_container</item>
+        <item name="colorSurfaceContainerHigh">@color/lg_surface_container_high</item>
+        <item name="colorSurfaceContainerHighest">@color/lg_surface_container_highest</item>
+        <item name="colorOutline">@color/lg_outline</item>
+        <item name="colorOutlineVariant">@color/lg_outline_variant</item>
+        <item name="colorError">@color/lg_error</item>
+        <item name="colorOnError">@color/lg_on_error</item>
+        <item name="colorErrorContainer">@color/lg_error_container</item>
+        <item name="colorOnErrorContainer">@color/lg_on_error_container</item>
+        <item name="colorSurfaceInverse">@color/lg_inverse_surface</item>
+        <item name="colorOnSurfaceInverse">@color/lg_inverse_on_surface</item>
+
+        <item name="android:windowBackground">@color/lg_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+
+        <item name="fontFamily">@font/app_font</item>
+        <item name="android:fontFamily">@font/app_font</item>
+
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.LG.Display</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.LG.Headline</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.LG.Title</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.LG.Title</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.LG.Subtitle</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.LG.Label</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.LG.Body</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.LG.Body</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.LG.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.LG.Label</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.LG.Caption</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.LG.Caption</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.LG.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.LG.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.LG.Large</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.LG.Small</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.LG.Medium</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.LG.Large</item>
+
+        <item name="materialButtonStyle">@style/Widget.LG.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.LG.Button.Outlined</item>
+        <item name="borderlessButtonStyle">@style/Widget.LG.Button.Text</item>
+        <item name="textInputStyle">@style/Widget.LG.TextInput</item>
+        <item name="materialCardViewStyle">@style/Widget.LG.Card</item>
+        <item name="chipStyle">@style/Widget.LG.Chip</item>
+        <item name="toolbarStyle">@style/Widget.LG.Toolbar</item>
+        <item name="bottomNavigationStyle">@style/Widget.LG.BottomNav</item>
+        <item name="tabStyle">@style/Widget.LG.Tabs</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.LG.Dialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.LG.BottomSheet</item>
+        <item name="snackbarStyle">@style/Widget.LG.Snackbar</item>
+        <item name="android:windowAnimationStyle">@style/LG.WindowAnimation</item>
+    </style>
+
+    <style name="Theme.LegalGuide" parent="Base.Theme.LegalGuide" />
+
+    <style name="Theme.LegalGuide.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/brand_navy</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_mark</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/brand_navy</item>
+        <item name="postSplashScreenTheme">@style/Theme.LegalGuide</item>
+    </style>
+
+    <style name="ThemeOverlay.LG.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.LG.Large</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="fontFamily">@font/app_font</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/LG.DialogTitle</item>
+    </style>
+
+    <style name="LG.DialogTitle" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textAppearance">@style/TextAppearance.LG.Title</item>
+    </style>
+
+    <style name="ThemeOverlay.LG.BottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.LG.BottomSheet</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="fontFamily">@font/app_font</item>
+    </style>
+
+    <style name="Widget.LG.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="shapeAppearance">@style/ShapeAppearance.LG.Sheet</item>
+        <item name="backgroundTint">@color/lg_surface</item>
+    </style>
+
+    <style name="LG.WindowAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/lg_open_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/lg_fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/lg_fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/lg_close_exit</item>
+    </style>
+</resources>

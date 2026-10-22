@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/space_2xl"
+    android:paddingTop="@dimen/space_s"
+    android:paddingEnd="@dimen/space_2xl">
+
+    <TextView
+        android:id="@+id/file_name"
+        style="@style/LG.Text.Muted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_m" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/title_layout"
+        style="@style/Widget.LG.TextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_m"
+        android:hint="@string/doc_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textAlignment="viewStart" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/doc_type_layout"
+        style="@style/Widget.LG.TextInput.Dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/doc_type">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/doc_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:textAlignment="viewStart" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

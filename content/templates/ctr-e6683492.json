@@ -1,0 +1,321 @@
+{
+ "id": "ctr-e6683492",
+ "name": "عقد اشهار وصية",
+ "category": "GIFTS_WILLS",
+ "categoryLabel": "الهبة والوصية",
+ "legalBasis": [
+  "القانون المدني — الهبة (م 486 وما بعدها)"
+ ],
+ "fields": [
+  {
+   "key": "f1",
+   "label": "اطيان زراعية كائنة بناحية",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f2",
+   "label": "مركز",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f3",
+   "label": "محافظة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f4",
+   "label": "المسطح اسم الحوض",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f5",
+   "label": "رقمه",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f6",
+   "label": "رقم اللوحة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f7",
+   "label": "رقم القطعة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f8",
+   "label": "الحد البحرى القطعة رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f9",
+   "label": "باسم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f10",
+   "label": "الحد القبلى القطعة رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f11",
+   "label": "باسم (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f12",
+   "label": "الحد الشرقى القطعة رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f13",
+   "label": "باسم (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f14",
+   "label": "الحد الغربى القطعة رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f15",
+   "label": "باسم (4)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f16",
+   "label": "سهم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f17",
+   "label": "قيراط",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f18",
+   "label": "فدان",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f19",
+   "label": "مشاعا فى القطعة رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f20",
+   "label": "البالغ مساحتها",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f21",
+   "label": "فقط",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f22",
+   "label": "افدنة ضمن المكلفة رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f23",
+   "label": "بالكشف الرسمى رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f24",
+   "label": "والضريبة المقررة مبلغ",
+   "type": "money",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "date25",
+   "label": "تاريخ — توفى المرحوم بتاريخ",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "date26",
+   "label": "تاريخ — توثيق بتاريخ",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f27",
+   "label": "توفى المرحوم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f28",
+   "label": "أوصى بهذه الاطيان ل",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f29",
+   "label": "فيها بمحضر التوثيق رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f30",
+   "label": "لسنة",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f31",
+   "label": "توثيق",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f32",
+   "label": "تضمنهم اعلام الوراثة رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f33",
+   "label": "لسنة (2)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f34",
+   "label": "وراثات",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f35",
+   "label": "ضمن مستندات الطالب وهم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f36",
+   "label": "بيان 36",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f37",
+   "label": "بيان 37",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f38",
+   "label": "القدر بالعقد المسجل رقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f39",
+   "label": "لسنة (3)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f40",
+   "label": "تو ثيق",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "date41",
+   "label": "تاريخ — ضرائب التركات المختصة بتاريخ",
+   "type": "date",
+   "required": false,
+   "defaultValue": ".../.../......"
+  },
+  {
+   "key": "f42",
+   "label": "التركات المختصة بتاريخ برقم",
+   "type": "text",
+   "required": false,
+   "defaultValue": "............"
+  },
+  {
+   "key": "f43",
+   "label": "سداد الضريبة المستحقة وقدرها",
+   "type": "money",
+   "required": false,
+   "defaultValue": "............"
+  }
+ ],
+ "body": "عن اطيان زراعية كائنة بناحية {{f1}} مركز {{f2}} محافظة {{f3}} المسطح اسم الحوض {{f4}} رقمه {{f5}} رقم اللوحة {{f6}} رقم القطعة {{f7}} الحدود\nالحد البحرى : القطعة رقم {{f8}} باسم {{f9}}\nالحد القبلى : القطعة رقم {{f10}} باسم {{f11}}\nالحد الشرقى : القطعة رقم {{f12}} باسم {{f13}}\nالحد الغربى : القطعة رقم {{f14}} باسم {{f15}}\nسهم {{f16}} قيراط {{f17}} فدان {{f18}} مشاعا فى القطعة رقم {{f19}} البالغ مساحتها {{f20}} فقط {{f21}} افدنة ضمن المكلفة رقم {{f22}} بالكشف الرسمى رقم {{f23}} والضريبة المقررة مبلغ {{f24}} جنيها سنويا.\nبيانات الوصية:\nتوفى المرحوم {{f27}} بتاريخ {{date25}} وقد أوصى بهذه الاطيان ل {{f28}} بموجب وصية مصدق على توقيع الموصى فيها بمحضر التوثيق رقم {{f29}} لسنة {{f30}} توثيق {{f31}} بتاريخ {{date26}} , وتخرج هذه الاطيان من ثلث التركة وفقا للقرار الصادر من ورثة الموصي الذين تضمنهم اعلام الوراثة رقم {{f32}} لسنة {{f33}} وراثات {{f34}} المرفق ضمن مستندات الطالب وهم {{f35}} , {{f36}} , {{f37}}\nوقد تملك الموصى هذا القدر بالعقد المسجل رقم {{f38}} لسنة {{f39}} تو ثيق {{f40}} ولم ترد فى شأنه أية حقوق عينية تبعية.\n\n وتم الافراج عنه بموجب شهادة افراج صادرة من مأمورية ضرائب التركات المختصة بتاريخ {{date41}} برقم {{f42}} ومرفقة ضمن مستندات الطالب، وذلك بعد سداد الضريبة المستحقة وقدرها {{f43}}\n\nهذه الوثائق لا تصلح الا لأغراض الاستهداء والاسترشاد فقط، ولا ينبغي اعتبارها بديلًا عن الاستشارات القانونية المختصة و/أو غير ذلك من الاعمال الصادرة من محام محترف ومرخص له بمزاولة المهنة، ولن تتحمل البوابة أي مسؤولية تنشأ عن أي خسارة أو ضرر أياً كانت طبيعته (مباشرة أو غير مباشرة أو تبعية أو غير ذلك) مما قد يحدث جراء استخدام العملاء (أو إساءة استخدامهم) لتلك الوثائق المقدمة علي موقعها.",
+ "description": "نموذج عقد اشهار وصية قابل للملء — 43 خانة.",
+ "credits": 1,
+ "active": true,
+ "sort": 194,
+ "version": 1,
+ "autoFields": true,
+ "source": "نماذج المستخدم (Word) — حُوّلت آليًا: كل فراغ منقّط أصبح خانة",
+ "draftingInstructions": "املأ الخانات بقيم المستخدم حرفيًا وأبقِ البنود كما هي. الخانات الفارغة تبقى نقاطًا. راجع اتساق الأسماء والمبالغ والتواريخ، ونبّه لأي بند يخالف نصًا آمرًا في المصادر المسترجعة دون اختلاق أرقام مواد."
+}

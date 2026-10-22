@@ -1,0 +1,78 @@
+{
+ "meta": {
+  "id": "law-111-1980-orig",
+  "type": "LAW",
+  "instrument": "LAW",
+  "number": 111,
+  "year": 1980,
+  "title": "قانون ضريبة الدمغة",
+  "subtitle": "القانون رقم 111 لسنة 1980 بإصدار قانون ضريبة الدمغة",
+  "categoryId": "tax",
+  "status": null,
+  "statusNote": null,
+  "suggestedStatus": null,
+  "suggestedStatusNote": null,
+  "amends": [],
+  "amendedBy": [
+   "law-199-2020",
+   "law-153-2026"
+  ],
+  "gazette": "الجريدة الرسمية — العدد 22 مكرر (أ) في 31 مايو 1980",
+  "issueDate": null,
+  "sourceFile": "law-111-1981.pdf",
+  "textQuality": "TRANSCRIBED",
+  "verified": true,
+  "pageCount": 1,
+  "articleCount": 4,
+  "missingArticleNumbers": [],
+  "notes": "مواد الإصدار فقط من الملف المصوّر؛ النص المجمّع للقانون في دفعة القوانين المجمّعة",
+  "sourcePages": 40,
+  "published": false,
+  "ocrRepairs": 0
+ },
+ "preamble": "قانون رقم ١١١ لسنة ١٩٨٠\nبإصدار قانون ضريبة الدمغة\nباسم الشعب\nرئيس الجمهورية\nقرر مجلس الشعب القانون الآتى نصه، وقد أصدرناه:",
+ "closing": "يبصم هذا القانون بخاتم الدولة، وينفذ كقانون من قوانينها.\nصدر برئاسة الجمهورية فى ١١ رجب سنة ١٤٠٠ (٢٦ مايو سنة ١٩٨٠).\nأنور السادات",
+ "interlude": "",
+ "articles": [
+  {
+   "key": "1",
+   "part": "main",
+   "number": 1,
+   "suffix": null,
+   "label": "مادة 1",
+   "heading": null,
+   "page": 1,
+   "text": "يعمل بأحكام القانون المرافق بشأن ضريبة الدمغة."
+  },
+  {
+   "key": "2",
+   "part": "main",
+   "number": 2,
+   "suffix": null,
+   "label": "مادة 2",
+   "heading": null,
+   "page": 1,
+   "text": "يلغى القانون رقم 224 لسنة 1951 بتقرير رسم دمغة والقوانين المعدلة له."
+  },
+  {
+   "key": "3",
+   "part": "main",
+   "number": 3,
+   "suffix": null,
+   "label": "مادة 3",
+   "heading": null,
+   "page": 1,
+   "text": "يصدر وزير المالية اللوائح والقرارات اللازمة لتنفيذ أحكام هذا القانون، وإلى أن تصدر هذه اللوائح والقرارات يستمر العمل باللوائح والقرارات المعمول بها فيما لا يتعارض مع أحكام هذا القانون."
+  },
+  {
+   "key": "4",
+   "part": "main",
+   "number": 4,
+   "suffix": null,
+   "label": "مادة 4",
+   "heading": null,
+   "page": 1,
+   "text": "ينشر هذا القانون فى الجريدة الرسمية، ويعمل به من اليوم التالى لتاريخ نشره."
+  }
+ ]
+}

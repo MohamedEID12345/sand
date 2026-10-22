@@ -1,0 +1,20 @@
+# Render Blueprint — سند (Sand) API
+# Render → New → Blueprint → اختر المستودع → Apply. ثم: Service → Environment → Secret Files → أضف ملف باسم .env (محتوى backend/.env).
+services:
+  - type: web
+    name: sand-api
+    runtime: node
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: node dist/index.js
+    healthCheckPath: /api/v1/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22.12.0"
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=460
+      - key: PUBLIC_BASE_URL
+        value: https://sand-api.onrender.com
