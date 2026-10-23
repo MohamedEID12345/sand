@@ -8,7 +8,7 @@ fun prop(name: String, fallback: String): String =
     (project.findProperty(name) as String?)?.takeIf { it.isNotBlank() } ?: fallback
 
 // Backend API (Node on Vercel → Supabase). Override with LG_API_BASE_URL in gradle.properties if your URL differs.
-val SAND_API = "https://sand-api.vercel.app/api/v1/"
+val SAND_API = "https://sand-api-seven.vercel.app/api/v1/"
 
 val keystoreProps = Properties().apply {
     val f = rootProject.file("keystore.properties")
