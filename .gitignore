@@ -14,3 +14,4 @@ build/
 *.apk
 __pycache__/
 backend/data/
+.vercel/

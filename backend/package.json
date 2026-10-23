@@ -17,7 +17,7 @@
     "test:supabase": "tsc -p . && node dist/scripts/testSupabase.js"
   },
   "engines": {
-    "node": ">=22.12"
+    "node": "22.x"
   },
   "dependencies": {
     "@google/genai": "^1.0.0",

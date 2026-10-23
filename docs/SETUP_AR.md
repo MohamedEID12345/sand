@@ -3,11 +3,11 @@
 ## الصورة العامة
 ```
 تطبيق Android ──HTTPS──▶ API سند (Node/Express)  ──المفتاح السري──▶ Supabase Postgres  (جدول lg_nodes)
-لوحة التحكم /admin ─────┘   (Render أو جهازك)                    └─▶ Supabase Storage   (sand-files)
+لوحة التحكم /admin ─────┘   (Vercel أو جهازك)                    └─▶ Supabase Storage   (sand-files)
                                                                      └─▶ Gemini / OpenAI / Groq / OpenRouter ، فوري
 ```
 - **Supabase** = قاعدة البيانات + الملفات. مشروعك: `https://yjqmqxpfgcbvxdbwddyf.supabase.co`
-- **الـ API** يجب أن يعمل على خادم Node (Render مجاني، أو جهازك للتجربة). لا يعمل داخل Supabase Edge Functions لأن المكتبة القانونية (≈17 ألف مادة) تُحمَّل في الذاكرة للبحث، وحدود Edge Functions (ثانيتا CPU لكل طلب) لا تسمح بذلك.
+- **الـ API** يعمل على **Vercel** (أو جهازك للتجربة). لا يعمل داخل Supabase Edge Functions لأن المكتبة القانونية (≈17 ألف مادة) تُحمَّل في الذاكرة للبحث، وحدود Edge Functions (ثانيتا CPU لكل طلب) لا تسمح بذلك.
 - **التطبيق لا يتصل بـ Supabase مباشرة** ولا يحتوي أي مفتاح: لو فعل لأصبحت مفاتيح Gemini وفوري داخل الـ APK ولقدر أي أحد يزوّد رصيده.
 - المفتاح العام `sb_publishable_…` و`SUPABASE_JWKS_URL` غير مستخدمين (التطبيق لا يستخدم Supabase Auth؛ الدخول عبر الـ API).
 
@@ -59,24 +59,33 @@
     - لوحة التحكم: http://localhost:4000/admin/ ← ادخل بحساب المالك.
     - فحص الحالة: http://localhost:4000/api/v1/health
 
-## الجزء 5 — نشر الـ API على الإنترنت (Render)
-13. ارفع المشروع على مستودع GitHub **خاص** (`.gitignore` يمنع رفع `.env`).
-14. https://dashboard.render.com ← **New ← Blueprint** ← اختر المستودع ← سيقرأ `render.yaml` ← **Apply**.
-    (اسم الخدمة `sand-api`، المنطقة Frankfurt — يفضّل أن تكون منطقة مشروع Supabase أوروبية أيضًا.)
-15. الخدمة ← **Environment ← Secret Files ← Add Secret File**:
-    - Filename: `.env`
-    - Contents: الصق محتوى `backend/.env` كاملًا ← **Save** ← **Manual Deploy ← Deploy latest commit**.
-16. بعد النشر انسخ رابط الخدمة (مثل `https://sand-api.onrender.com`) وتأكد:
-    - `https://sand-api.onrender.com/api/v1/health` ← `{"ok":true,…}`
-    - `https://sand-api.onrender.com/admin/`
-    لو الرابط مختلف: عدّل `PUBLIC_BASE_URL` في Secret File و`render.yaml`، وفي التطبيق (الخطوة 19).
+## الجزء 5 — نشر الـ API على Vercel
+13. ارفع المشروع على GitHub (مستودع **خاص**) — `.gitignore` يمنع رفع `.env`.
+14. https://vercel.com/new ← **Import** المستودع ← في شاشة الإعداد:
+    - **Project Name:** `sand-api`
+    - **Root Directory:** اضغط Edit ← اختر `backend` ← Continue
+    - **Framework Preset:** Other (الإعدادات تُقرأ من `backend/vercel.json` — لا تغيّر Build/Output)
+    - **Environment Variables:** انسخ محتوى `backend/.env` كله والصقه في خانة **Key** — Vercel يفصله تلقائيًا لكل المتغيرات.
+      تأكد أن `NODEJS_HELPERS=0` و`SUPABASE_URL` و`SUPABASE_SECRET_KEY` ظهروا ضمنها.
+15. **Deploy** ← انتظر ~دقيقة.
+16. انسخ رابط المشروع (مثل `https://sand-api.vercel.app`) وتأكد:
+    - `https://sand-api.vercel.app/api/v1/health` ← `{"ok":true,…}`
+    - `https://sand-api.vercel.app/admin/` ← لوحة التحكم
+    لو الرابط مختلف: عدّل `PUBLIC_BASE_URL` في **Settings ← Environment Variables** ثم **Redeploy**، وعدّل رابط التطبيق (الخطوة 19).
+17. **المنطقة:** `vercel.json` يضبطها على فرانكفورت `fra1`. لو مشروع Supabase في منطقة أخرى (Supabase ← Project Settings ← General ← Region) غيّر `regions` لأقرب منطقة Vercel له، لأن كل طلب يكلّم قاعدة البيانات عدة مرات.
 
-> الباقة المجانية في Render تنام بعد 15 دقيقة بلا طلبات؛ أول طلب بعدها يأخذ ~دقيقة. للإنتاج استخدم باقة Starter أو أي خادم Node دائم.
-> بديل: أي استضافة Node.js 22 (VPS أو cPanel ← Setup Node.js App): Application root = `backend`، Startup file = `dist/index.js`، ثم `npm install && npm run build`، وضع `.env` داخل `backend`.
+> **حدود Vercel:**
+> - حجم الطلب الواحد حتى **4.5 ميجا** ⇒ رفع مستند/قانون أكبر من ذلك يفشل (413). للملفات الكبيرة استخدم جهازك (`npm run dev`) أو اطلب تعديل الرفع ليكون مباشرة إلى Supabase Storage.
+> - مدة الطلب حتى 300 ثانية (كافية للذكاء الاصطناعي).
+> - أول طلب بعد فترة سكون يأخذ ثوانيَ (تحميل المكتبة من Storage).
+> - باقة **Hobby المجانية للاستخدام الشخصي/غير التجاري فقط** حسب شروط Vercel؛ لتشغيل سند تجاريًا تحتاج باقة **Pro**.
+> - كل `git push` على `main` يعيد النشر تلقائيًا.
+>
+> بديل بدون هذه الحدود: Render (`render.yaml` في جذر المشروع) أو أي خادم Node 22.
 
 ## الجزء 6 — تطبيق Android
 17. Android Studio ← **Open** ← اختر مجلد `apps/android` ← انتظر **Gradle Sync**.
-18. الرابط الافتراضي للـ API في التطبيق: `https://sand-api.onrender.com/api/v1/`.
+18. الرابط الافتراضي للـ API في التطبيق: `https://sand-api.vercel.app/api/v1/`.
 19. لو رابطك مختلف: افتح `apps/android/gradle.properties` وأضف:
     ```
     LG_API_BASE_URL=https://رابطك/api/v1/
@@ -93,12 +102,12 @@
 ## الاستخدام اليومي
 | المهمة | الطريقة |
 |---|---|
-| تعديل الكود | `git push` ← Render ينشر تلقائيًا |
+| تعديل الكود | `git push` ← Vercel ينشر تلقائيًا |
 | قانون Word/TXT/JSON | ارفعه من اللوحة ← يُنشر فورًا |
 | قانون PDF | ارفعه من اللوحة (قائمة انتظار) ← على جهازك: `cd backend && npm run process-queue` (يحتاج Python وأدوات `backend/tools/ingest`) |
 | ملفات جديدة في `content/` | `cd backend && npm run setup` |
 | نسخة احتياطية | اللوحة ← النظام ← «نسخة احتياطية كاملة الآن» (+ Supabase ← Database ← Backups) |
-| فوري | Webhook: `https://sand-api.onrender.com/api/v1/webhooks/fawry` + `FAWRY_MERCHANT_CODE`/`FAWRY_SECURE_KEY` في Secret File |
+| فوري | Webhook: `https://sand-api.vercel.app/api/v1/webhooks/fawry` + `FAWRY_MERCHANT_CODE`/`FAWRY_SECURE_KEY` في متغيرات Vercel |
 
 ## حدود الباقة المجانية في Supabase
 - قاعدة البيانات 500MB (المكتبة كاملة مع المتجهات ≈ 100–150MB)، التخزين 1GB، حجم الملف حتى 50MB.
@@ -106,7 +115,7 @@
 
 ## الأمان — مهم
 - المفتاح السري `sb_secret_…` ومفاتيح الذكاء الاصطناعي أُرسلت في المحادثة. بعد التأكد أن كل شيء يعمل:
-  Supabase ← Project Settings ← API Keys ← أنشئ Secret key جديدًا واحذف القديم، وحدّث `.env` وSecret File في Render.
+  Supabase ← Project Settings ← API Keys ← أنشئ Secret key جديدًا واحذف القديم، وحدّث `.env` ومتغيرات Vercel ثم Redeploy.
 - لا تضع `SUPABASE_SECRET_KEY` في التطبيق أو أي صفحة ويب أبدًا.
 
 ## حل المشاكل
@@ -114,6 +123,7 @@
 |---|---|
 | `429 … quota` في `npm run embed` أو «بحث الإنترنت» | حد الباقة المجانية لـ Gemini — انتظر أو فعّل الفوترة؛ المحادثة تتحول تلقائيًا لـ Groq/OpenRouter |
 | OpenAI: `You have no credits remaining` | اشحن رصيد OpenAI أو امسح `OPENAI_API_KEY` ليتخطاه الترتيب |
+| Vercel: `413 FUNCTION_PAYLOAD_TOO_LARGE` | الملف أكبر من 4.5 ميجا — ارفعه من جهازك أو قسّمه |
 | `جدول قاعدة البيانات غير موجود` | لم يُشغَّل `supabase/schema.sql` — الخطوة 2 |
 | `SUPABASE_URL و SUPABASE_SECRET_KEY غير موجودين` | `backend/.env` ناقص أو غير موجود بجانب `package.json` |
 | `Invalid API key` / `401` | المفتاح السري خاطئ أو تم تدويره — انسخه من جديد |
